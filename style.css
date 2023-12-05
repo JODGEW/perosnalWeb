@@ -8,7 +8,7 @@
 body {
     font-family: 'Press Start 2P', cursive;
     line-height: 1.6;
-    color: #333;
+    color: #000;
     background-color: #fff;
 }
 
@@ -20,7 +20,7 @@ html, body {
 }
 
 body {
-    background: url('pixel.jpg');
+    background: url('pixel1.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -44,7 +44,7 @@ p {
 
 /* Header and Navigation */
 header {
-    color: #333;
+    color: #000;
     padding: 0 20px;
     text-align: center;
     display: flex; /* Use flexbox */
@@ -66,7 +66,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #333;
+    color: #000;
     text-decoration: none;
     font-weight: bold;
 }
@@ -212,7 +212,7 @@ h2, h3 {
 
 .projects-section h2 {
     font-size: 2.5rem; /* Size of the section heading */
-    color: #333; /* Color of the section heading */
+    color: #000; /* Color of the section heading */
     margin-bottom: 20px; /* Space below the heading */
 }
 
@@ -234,19 +234,19 @@ h2, h3 {
 
 .project-item h3 {
     font-size: 1.5rem; /* Size of the project title */
-    color: #333; /* Color of the project title */
+    color: #000; /* Color of the project title */
     margin-bottom: 10px; /* Space below the title */
 }
 
 .project-item p {
     font-size: 1rem; /* Size of the project description */
-    color: #333; /* Color of the project description */
+    color: #000; /* Color of the project description */
     margin-bottom: 20px; /* Space below the description */
 }
 
 .project-item button {
     display: inline-block;
-    background: #e74c3c; /* Button color */
+    background: #ee2746; /* Button color */
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -263,7 +263,7 @@ h2, h3 {
 }
 
 .project-item button:hover{
-    background: #c0392b; /* Darker shade on hover */
+    background: #e74c3c; /* Darker shade on hover */
 }
 
 /* Contact Section */
@@ -303,7 +303,7 @@ h2, h3 {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px; /* Space between button and form */
-    background-color: #63071c;
+    background-color: #ee2746;
     color: white;
     border: none;
     border-radius: 5px;
@@ -317,7 +317,7 @@ h2, h3 {
 
 .comment-form-container h2 {
     text-align: center;
-    color: #333;
+    color: #000;
 }
 
 .comment-form-container form {
@@ -343,7 +343,7 @@ h2, h3 {
     width: fit-content; /* Adjust width to the content of the button */
     padding: 10px 20px; /* Provide adequate padding */
     margin: 20px auto; /* Center the button horizontally in the container */
-    background-color: #e74c3c; /* Example button color */
+    background-color: #ee2746; /* Example button color */
     color: white;
     border: none;
     border-radius: 4px;
@@ -366,7 +366,7 @@ h2, h3 {
 
 /* Footer */
 footer {
-    color: #333;
+    color: #000;
     text-align: center;
     padding: 10px 0;
 }
@@ -411,7 +411,7 @@ button {
     padding: 10px;
     border: none;
     border-top: 1px solid #ddd;
-    background-color: #e74c3c;;
+    background-color: #ee2746;;
     color: white;
     cursor: pointer;
 }
