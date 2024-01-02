@@ -149,6 +149,51 @@ header nav ul li a {
 }
 
 /* Skill Section */
+.skills-legend {
+    margin-top: 20px; /* Add space between the chart and the legend */
+}
+
+.skills-legend h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.skills-legend ul {
+    list-style-type: none; /* Removes default list styling */
+    padding: 0;
+}
+
+.skills-legend li {
+    margin-bottom: 5px; /* Add space between legend items */
+}
+
+.legend-range {
+    font-weight: bold; /* Make the range stand out */
+    margin-right: 5px; /* Add space between the range and the description */
+}
+
+.skill-percentage {
+    position: absolute;
+    left: calc(100% - 10px); /* Adjust the 10px if more or less space is needed */
+    top: 50%;
+    transform: translate(-100%, -50%);
+    color: #eea2a4; /* Or any color that is visible on your skill bar */
+    font-family: 'Arial', sans-serif; /* Your font of choice */
+    font-size: 0.85em; /* Adjust size as needed */
+    padding: 2px 5px; /* Optional: adds some padding around the text */
+    background: #8b3e3f; /* Optional: adds a semi-transparent background */
+    border-radius: 5px; /* Optional: rounds the corners of the background */
+}
+
+.skill-bar {
+    background-color: #eea2a4;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    padding-right: 30px
+}
+
 .skills-section {
     width: 100%;
     max-width: 1024px;
@@ -285,83 +330,6 @@ h2, h3 {
 
 .contact-methods a:hover {
     color: #ee2746; /* Darker color on hover */
-}
-
-/* Comment Section */
-.comment-section {
-    max-width: 600px;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #b0b0b0;
-    border: 1px solid #e1e1e1;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.write-comment-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px; /* Space between button and form */
-    background-color: #ee2746;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.write-comment-button:hover {
-    background-color: #e74c3c;
-}
-
-.comment-form-container h2 {
-    text-align: center;
-    color: #000;
-}
-
-.comment-form-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.comment-form-container label {
-    margin-top: 10px;
-}
-
-.comment-form-container input,
-.comment-form-container textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 5px; /* Space between label and input field */
-}
-
-.comment-form-container button {
-    display: block; /* Use block to allow margins to center the element */
-    width: fit-content; /* Adjust width to the content of the button */
-    padding: 10px 20px; /* Provide adequate padding */
-    margin: 20px auto; /* Center the button horizontally in the container */
-    background-color: #ee2746; /* Example button color */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center; /* Centers the text horizontally */
-    /* Remove vertical-align as it has no effect on block-level elements */
-    
-    /* Optional: Set line-height for vertical centering if the height is fixed */
-    /* line-height: 50px; If you know the exact height you want for your button */
-    
-    /* Add specific font styles if necessary */
-    font-size: 16px; /* Adjust the font-size as necessary */
-    font-family: 'Press Start 2P', cursive;
-}
-
-.comment-form-container button:hover {
-    background-color: #e74c3c;
 }
 
 /* Footer */
