@@ -177,11 +177,11 @@ header nav ul li a {
     left: calc(100% - 10px); /* Adjust the 10px if more or less space is needed */
     top: 50%;
     transform: translate(-100%, -50%);
-    color: #eea2a4; /* Or any color that is visible on your skill bar */
+    color: #000; /* Or any color that is visible on your skill bar */
     font-family: 'Arial', sans-serif; /* Your font of choice */
-    font-size: 0.85em; /* Adjust size as needed */
+    font-size: 0.9em;
     padding: 2px 5px; /* Optional: adds some padding around the text */
-    background: #8b3e3f; /* Optional: adds a semi-transparent background */
+    background: #ed5a65; /* Optional: adds a semi-transparent background */
     border-radius: 5px; /* Optional: rounds the corners of the background */
 }
 
@@ -240,7 +240,7 @@ header nav ul li a {
 }
 
 .skill-level {
-    background-color: #ed5a65;
+    background-color: #ee2746;
     height: 100%;
     border-radius: 5px;
 }
