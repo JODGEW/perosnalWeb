@@ -20,7 +20,6 @@ html, body {
 }
 
 body {
-    background: url('pixel.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -181,7 +180,7 @@ header nav ul li a {
     font-family: 'Roboto Condensed', sans-serif; /* Your font of choice */
     font-size: 0.9em;
     padding: 2px 5px; /* Optional: adds some padding around the text */
-    background: #ed5a65; /* Optional: adds a semi-transparent background */
+    background: #eea2a4; /* Optional: adds a semi-transparent background */
     border-radius: 5px; /* Optional: rounds the corners of the background */
 }
 
