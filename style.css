@@ -39,7 +39,7 @@ body {
   }
 
 p {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto Condensed', cursive;
 }
 
 /* Header and Navigation */
@@ -141,7 +141,7 @@ header nav ul li a {
     margin: 20px auto; /* Center the button horizontally in the container */
     transition: background-color 0.3s ease;
     text-align: center; /* Centers the text horizontally */
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto Condensed', cursive;
 }
 
 .resume-button:hover {
@@ -178,7 +178,7 @@ header nav ul li a {
     top: 50%;
     transform: translate(-100%, -50%);
     color: #000; /* Or any color that is visible on your skill bar */
-    font-family: 'Arial', sans-serif; /* Your font of choice */
+    font-family: 'Roboto Condensed', sans-serif; /* Your font of choice */
     font-size: 0.9em;
     padding: 2px 5px; /* Optional: adds some padding around the text */
     background: #ed5a65; /* Optional: adds a semi-transparent background */
@@ -206,7 +206,7 @@ header nav ul li a {
 }
 
 .skill label {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto Condensed', cursive;
 }
 
 .skills-container {
@@ -303,7 +303,7 @@ h2, h3 {
     margin: 20px auto; /* Center the button horizontally in the container */
     transition: background-color 0.3s ease;
     text-align: center; /* Centers the text horizontally */
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto Condensed', cursive;
     text-transform: uppercase; /* Uppercase button text */
 }
 
