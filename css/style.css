@@ -30,7 +30,7 @@ nav {
     text-align: center;
     gap: 2rem;
     list-style: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 header nav ul {
@@ -39,7 +39,7 @@ header nav ul {
 
 header nav ul li {
     display: inline;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 header nav ul li a {
@@ -56,7 +56,7 @@ a {
 a:hover {
     color: grey;
     text-decoration: underline;
-    text-underline-offset: 1rem;
+    text-underline-offset: 0.5rem;
     text-decoration-color: rgb(181, 181, 181);
 }
 
@@ -129,7 +129,7 @@ a:hover {
 }
   
 .btn-color:hover {
-    background: rgb(53, 53, 53);
+    background: rgb(90, 90, 90);
     color: white;
 }
   
