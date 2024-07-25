@@ -1,7 +1,7 @@
 # perosnalWeb
 
 Personal Website Link: https://bit.ly/wenhaohe 
-(Backup)https://jodgew.github.io/perosnalWeb/index.html
+(Backup)https://jodgew.github.io/perosnalWeb/html/index.html
 
 
 ## Reference
