@@ -3,28 +3,58 @@ body {
   padding: 15px 20px;
   min-height: 99%;
   width: 100%;
-  min-width: 550px;
   color: #519975;
   background: #211D1B;
   font-family: cursor, monospace;
   overflow-x: hidden;
+  box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
 }
+
 ::selection {
   color: #211830;
   background-color: #519975;
 }
+
 ::-moz-selection {
   color: #211830;
   background-color: #519975;
 }
+
 textarea {
   left: -1000px;
   position: absolute;
 }
+
 b {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.ascii-art {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ascii-art a {
+  display: block;
+  font-family: monospace;
+  white-space: pre-wrap; /* Preserve whitespace */
+  word-wrap: break-word; /* Break long words */
+  font-size: 1em;
+}
+
+@media (max-width: 768px) {
+  .ascii-art a {
+    font-size: 0.7em; /* Scale down the font size on smaller screens */
+  }
+}
+
+@media (max-width: 550px) {
+  .ascii-art a {
+    font-size: 0.5em; /* Further scale down the font size on smaller screens */
+  }
+}
+
 /* Cursor Start */
 .cursor {
   font-size: 12px;
@@ -42,16 +72,19 @@ b {
   text-decoration: blink;
   animation: blinker 1s linear infinite;
 }
+
 @keyframes blinker {
   50% {
-      opacity: 0;
+    opacity: 0;
   }
 }
+
 #command {
   cursor: text;
   height: 50px;
   color: #73ABAD;
 }
+
 #liner {
   line-height: 1.3em;
   margin-top: -2px;
@@ -59,21 +92,21 @@ b {
   animation-delay: 1.2s;
   opacity: 0;
 }
+
 #liner::before {
   color: #519975;
   content: "visitor@wenhaohe:~$";
 }
-#liner.password::before {
-  content: "Password:";
-}
+
 @keyframes show {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
+
 /* Cursor End */
 p {
   display: block;
@@ -81,51 +114,62 @@ p {
   margin: 0;
   overflow: hidden;
   white-space: nowrap;
-  margin: 0;
   letter-spacing: 0.05em;
   animation: typing 0.5s steps(30, end);
 }
+
 .no-animation {
   animation: typing 0 steps(30, end);
 }
+
 .margin {
   margin-left: 20px;
 }
+
 @keyframes typing {
   from {
-      width: 0;
+    width: 0;
   }
   to {
-      width: 100%;
+    width: 100%;
   }
 }
+
 .index {
   color: #DCDCCC;
 }
+
 .color2 {
   color: #B89076;
 }
+
 .command {
   color: #73ABAD;
   text-shadow: 0 0 5px #73ABAD; 
 }
+
 .error {
   color: #B89076;
 }
+
 .white {
   color: #fff;
 }
+
 .inherit,
 a {
   color: #9C8394;
 }
+
 a {
   text-decoration: inherit;
 }
+
 a:hover {
   background: #73ABAD;
   color: #211830;
 }
+
 a:focus {
   outline: 0;
 }
@@ -133,18 +177,36 @@ a:focus {
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
-      padding: 10px;
-      font-size: 14px;
+    padding: 10px;
+    font-size: 14px;
   }
   .cursor {
-      font-size: 10px;
-      height: 1.2em;
-      width: 8px;
+    font-size: 10px;
+    height: 1.2em;
+    width: 8px;
   }
   #command {
-      height: 40px;
+    height: 40px;
   }
   p {
-      font-size: 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .cursor {
+    font-size: 8px;
+    height: 1em;
+    width: 6px;
+  }
+  #command {
+    height: 30px;
+  }
+  p {
+    font-size: 12px;
   }
 }
