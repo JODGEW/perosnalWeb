@@ -10,9 +10,9 @@
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Project</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contacts</a></li>
             </ul>
         </nav>
     </header>
@@ -24,12 +24,10 @@
         <div class="info">
             <h1 class="title">About Me</h1>
             
-            <p>My name is Wenhao He. I recently graduated from the <strong>University at Buffalo</strong> 
-                with <strong>Master of Science in Engineering Science, focusing on Artificial Intelligence (AI)</strong>. 
-                I also hold a <strong>Bachelor of Science in Computer Science</strong> at the same institution. My expertise includes 
-                <strong>machine learning</strong>, <strong>data analytics</strong>, and <strong>software development</strong>, with proficiency in 
-                <strong>Python</strong>, <strong>SQL</strong>, <strong>JavaScript</strong>, <strong>React/React Native</strong>, <strong>Microsoft Azure</strong>, 
-                <strong>AWS</strong>, <strong>Hadoop</strong>, and <strong>Spark</strong>.</p>
+            <p>My name is Wenhao He. I recently graduated from the <strong>University at Buffalo</strong> with <strong>MSc in Engineering Science(Artificial Intelligence)</strong>. 
+                combined with a <strong>BSc in Computer Science</strong>. I bring a solid foundation in <strong>machine learning</strong>, <strong>data analytics</strong>, 
+                and <strong>software development</strong>, with proficiency in <strong>Python</strong>, <strong>SQL</strong>, <strong>JavaScript</strong>, 
+                <strong>React/React Native</strong>, <strong>Azure</strong>, <strong>AWS</strong>, <strong>Hadoop</strong>, and <strong>PySpark</strong>.</p>
 
             <div class="btn-container">
                 <button
@@ -101,9 +99,10 @@
             </div>
         </div>
     </section>
+    
 
     <section id="projects">
-        <h1 class="title">Project Experiences</h1>
+        <h1 class="title">Projects</h1>
 
         <div class="project-box-containers">
             <div class="project-container">
@@ -115,90 +114,87 @@
                         <source src="../others/BOE_Ginsburg.mp3" type="audio/mpeg">
                         Your browser does not support the audio tag.
                     </audio>
+                    <div class="btn-container">
+                        <button
+                        class="btn btn-color"
+                        onclick="location.href='../others/AudioCloning_Paper.pdf'"
+                        >
+                            Paper
+                        </button>
+                    </div>
                 </article>
-                <div class="btn-container">
-                    <button
-                      class="btn btn-color"
-                      onclick="location.href='../others/AudioCloning_Paper.pdf'"
-                    >
-                        Paper
-                    </button>
-                </div>
             </div>
         </div>
 
         <div class="project-box-containers">
             <div class="project-container">
                 <article class="project-item">
-                    <h3>Monocular Depth Estimation in Single Image</h3>
+                    <img src="../images/MDE.png" alt="Monocular Depth Estimation">
+                    <h3>Monocular Depth Estimation</h3>
                     <p>Implemented encoder-decoder CNN structure for 3D distance estimation from 2D images</p>
-                    <img src="../images/MDE.png" alt="Monocular Depth Estimation" width="800" height="600">
+                    <div class="btn-container">
+                        <button
+                          class="btn btn-color"
+                          onclick="location.href='../others/monocular_depth_estimation.pdf'"
+                        >
+                            Paper
+                        </button>
+                    </div>
                 </article>
-            </div>
-            <div class="btn-container">
-                <button
-                  class="btn btn-color"
-                  onclick="location.href='../others/monocular_depth_estimation.pdf'"
-                >
-                    Paper
-                </button>
             </div>
         </div>
 
         <div class="project-box-containers">
             <div class="project-container">
                 <article class="project-item">
-                    <h3>MOVIE RECOMMENDATION SYSTEM</h3>
+                    <img src="../images/page.png" alt="MOVIE RECOMMENDATION SYSTEM">
+                    <h3>Movie recommendation System</h3>
                     <p>Developed a web app utilizing TMDb data for fetching and IMDb data for training on custom transformer deep learning model to provide personalized movie recommendations</p>
-                    <img src="../images/page.png" alt="MOVIE RECOMMENDATION SYSTEM" width="800" height="600">
+                    <div class="btn-container">
+                        <button
+                        class="btn btn-color"
+                        onclick="location.href='https://github.com/JODGEW/Movie-Recommendation'"
+                        >
+                            GitHub
+                        </button>
+                    </div>
                 </article>
-            </div>
-            <div class="btn-container">
-                <button
-                  class="btn btn-color"
-                  onclick="location.href='https://github.com/JODGEW/Movie-Recommendation'"
-                >
-                    GitHub
-                </button>
             </div>
         </div>
 
         <div class="project-box-containers">
             <div class="project-container">
                 <article class="project-item">
-                    <h3>YouTube Video Summarizer</h3>
-                    <p>A web app for transcribing, summarizing, and translating YouTube videos globally</p>
-                    <video width="960" height="720" controls>
+                    <video id="videoPlayer" controls>
                         <source src="../others/YouTube.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <h3>YouTube Video Summarizer</h3>
+                    <p>A web app for transcribing, summarizing, and translating YouTube videos globally</p>
+                    <div class="btn-container">
+                        <button class="btn btn-color" onclick="location.href='https://github.com/JODGEW/YouTubeSummarizer'">
+                            GitHub
+                        </button>
+                    </div>
                 </article>
-                <div class="btn-container">
-                    <button
-                      class="btn btn-color"
-                      onclick="location.href='https://github.com/JODGEW/YouTubeSummarizer'"
-                    >
-                        GitHub
-                    </button>
-                </div>
             </div>
         </div>
 
         <div class="project-box-containers">
             <div class="project-container">
                 <article class="project-item">
+                    <img src="../images/CV.png" alt="Detection on Fruit/Vegetables">
                     <h3>Detection on Fruit/Vegetables in 2D Images</h3>
                     <p>Conducted a Computer Vision project for detecting fruit and vegetables in 2D images</p>
-                    <img src="../images/CV.png" alt="Detection on Fruit/Vegetables">
+                    <div class="btn-container">
+                        <button
+                        class="btn btn-color"
+                        onclick="location.href='https://github.com/JODGEW/Fruit-Classification'"
+                        >
+                            GitHub
+                        </button>
+                    </div>
                 </article>
-            </div>
-            <div class="btn-container">
-                <button
-                  class="btn btn-color"
-                  onclick="location.href='https://github.com/JODGEW/Fruit-Classification'"
-                >
-                    GitHub
-                </button>
             </div>
         </div>
     </section>
