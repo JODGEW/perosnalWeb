@@ -60,7 +60,7 @@ function commander(cmd) {
         case "start":
             loopLines(start, "color2 margin", 80);
             setTimeout(function() {
-                window.location.href = "./main/index.html";
+                window.location.href = "/main/";
             }, 1000); // Wait 1 second before redirecting
             break;
         case "clear":
