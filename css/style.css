@@ -74,7 +74,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 .profile-container {
@@ -120,31 +120,22 @@ a:hover {
 .btn {
     font-weight: 600;
     transition: all 300ms ease;
-    padding: 1rem;
-    width: 8rem;
+    padding: 1rem 2rem;
     border-radius: 2rem;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .btn-color {
+    background: none;
     border: rgb(53, 53, 53) 0.1rem solid;
 }
 
 .btn-color:hover {
-    cursor: pointer;
-}
-  
-.btn-color:hover {
-    background: rgb(90, 90, 90);
+    background: #3e3e3e;
     color: white;
-}
-  
-.btn-color {
-    background: none;
-}
-  
-.btn-color:hover {
     border: rgb(255, 255, 255) 0.1rem solid;
-    background: #28282B;
 }
 
 /* Skill Section */
@@ -157,7 +148,7 @@ a:hover {
     color: #28282B;
     font-weight: 600;
     font-size: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .skills-section {
@@ -201,19 +192,19 @@ a:hover {
 }
 
 .skills-list img {
-    height: 50px; /* Adjust size as needed */
+    height: 50px;
     margin: 5px;
     transition: transform 0.3s ease-in-out;
 }
 
 .skills-list img:hover {
-    transform: scale(1.1); /* Optional: adds interaction */
+    transform: scale(1.1);
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .skills-list {
-        justify-content: center; /* Centers items on smaller screens */
+        justify-content: center;
     }
 }
 
@@ -223,11 +214,11 @@ h2, h3 {
 
 /* Project Section */
 #projects {
-    background: #f5f5f5;
+    background: #fff;
     padding: 20px 0; /* Top and bottom padding only */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Spreads the boxes evenly */
+    justify-content: space-around;
     align-items: flex-start;
 }
 
@@ -239,11 +230,11 @@ h2, h3 {
 }
 
 .project-box-containers {
-    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    background: linear-gradient(145deg, #ffffff, #e0dddd);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     border-radius: 10px;
-    width: 25%; /* Maintain narrower card width */
-    margin: 20px; /* Increased margin for more space between cards */
+    width: 25%;
+    margin: 20px;
     position: relative;
     overflow: hidden;
     height: auto;
@@ -251,8 +242,8 @@ h2, h3 {
 }
 
 .project-box-containers:hover {
-    box-shadow: 0 12px 24px rgba(0,0,0,0.2); /* Increased shadow for lifted effect */
-    transform: translateY(-15px); /* Moves the card up */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    transform: translateY(-15px);
 }
 
 .project-container {
@@ -264,19 +255,19 @@ h2, h3 {
 .project-item img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-radius: 8px;
     margin-bottom: 15px;
 }
 
 .project-item h3 {
     font-size: 1.5rem;
-    color: #333;
+    color: #4b4b4b;
     margin-bottom: 10px;
 }
 
 .project-item p {
     font-size: 1rem;
-    color: #666;
+    color: #7a7a7a;
     margin-bottom: 15px;
     text-align: center;
 }
@@ -365,7 +356,7 @@ footer {
         margin: 5px 0;
     }
     .project-box-containers {
-        width: 100%; /* Full width on small screens */
+        width: 100%;
         margin: 10px 0;
     }
 }
