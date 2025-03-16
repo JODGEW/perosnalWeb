@@ -1,229 +1,876 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Wenhao He</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="description" content="Wenhao He - AI & Software Engineer with expertise in Machine Learning, Computer Vision, and Full-Stack Development. UB graduate skilled in Python, TensorFlow, and cloud computing—building AI-driven, scalable solutions for real-world applications." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#211D1B" />
+  <meta name="author" content="Wenhao He" />
+  <meta name="keywords" content="Software Engineer, Machine Learning, Data Analytics, Python, TensorFlow, Software Development, Computer Vision" />
+  
+  <meta property="og:title" content="Wenhao He" />
+  <meta property="og:description" content="AI & Software Engineer leveraging ML, Deep Learning, and Full-Stack Development to build intelligent, scalable solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://wenhaohe.com" />
+  
+  <title>Wenhao He</title>
+  
+  <!-- Preloading critical assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@300;400;500&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Fira+Code:wght@300;400;500&display=swap">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contacts</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Matrix Rain Background -->
+  <canvas class="matrix-rain" id="matrix-rain"></canvas>
 
-    <section id="about">
-        <div class="profile-container">
-            <img src="../images/profile.jpg" alt="Wenhao He" class="profile-picture">
+  <!-- Loading Screen -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="terminal-loader">
+      <div class="loading-text">Booting up Wenhao He's Digital Space</div>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container nav-container">
+      <!-- Logo with blinking cursor -->
+      <a href="#" class="logo logo-terminal cursor-blink" aria-label="Wenhao He Portfolio Home">
+        Wenhaohe<span style="color: var(--light-text)">.com</span>
+      </a>
+
+      <!-- Mobile Menu Toggle -->
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >☰</button>
+
+      <!-- Navigation -->
+      <nav id="main-nav">
+        <ul>
+          <li><a href="#about" class="active">about</a></li>
+          <li><a href="#skills">skills</a></li>
+          <li><a href="#projects">projects</a></li>
+          <li><a href="#contact">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU BACKDROP -->
+  <div class="backdrop" id="backdrop"></div>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg class="back-to-top-icon" xmlns="http://www.w3.org/2000/svg" 
+         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+         stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="tech-particles" id="tech-particles"></div>
+      <div class="container hero-content">
+        <h1 class="hero-title reveal">Wenhao He</h1>
+        <h2 class="hero-subtitle reveal reveal-delay-1">Coding the Future, Engineering AI.</h2>
+        <p class="hero-text reveal reveal-delay-2">
+          AI & Software Engineer with a passion for Machine Learning, Deep Learning, and Full-Stack Development. 
+          UB graduate skilled in Python, TensorFlow, and cloud computing—crafting scalable, AI-driven solutions 
+          for real-world impact.
+        </p>
+        <a href="#projects" class="hero-cta reveal reveal-delay-3">
+          View My Projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+               viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section" id="about">
+      <div class="bg-pattern dots"></div>
+      <div class="section-inner">
+        <h2 class="reveal">About Me</h2>
+        
+        <div class="about-grid">
+          <div class="about-image reveal">
+            <div class="about-image-inner">
+              <img src="../images/profile.jpg" alt="Wenhao He" class="about-avatar" />
+            </div>
+          </div>
+          
+          <div class="about-content">
+            <div class="terminal-window reveal reveal-delay-1">
+              <div class="terminal-header">
+                <div class="terminal-buttons">
+                  <div class="terminal-button terminal-button-close"></div>
+                  <div class="terminal-button terminal-button-minimize"></div>
+                  <div class="terminal-button terminal-button-maximize"></div>
+                </div>
+                <div class="terminal-title">wenhaohe@macbook: ~/portfolio</div>
+              </div>
+
+              <div class="terminal-content">
+                <!-- whoami -->
+                <div class="command-line">
+                  <span class="typing typing-delay-1">whoami</span>
+                </div>
+                <div class="command-output">
+                  <span class="terminal-user"><strong>Wenhao He</strong></span>
+                </div>
+                <div class="command-output">
+                  <p>
+                    I'm a UB graduate with an <strong>MSc in Engineering Science (AI)</strong> & a 
+                    <strong>BSc in Computer Science</strong>.
+                  </p>
+                </div>
+              
+                <!-- echo $SKILLS -->
+                <div class="command-line">
+                  <span class="typing typing-delay-2">echo $SKILLS</span>
+                </div>
+                <div class="command-output">
+                  <p>
+                    Machine Learning, data analytics, software dev. Skilled in Python, TypeScript, JavaScript, 
+                    React/React Native, GraphQL, Azure, AWS, GCP.
+                  </p>
+                </div>
+              
+                <!-- echo $INTERESTS -->
+                <div class="command-line">
+                  <span class="typing typing-delay-3">echo $INTERESTS</span>
+                </div>
+                <div class="command-output">
+                  <p>
+                    Always learning—exploring AI, testing cutting-edge tech, and building from the ground up.
+                  </p>
+                </div>
+              
+                <!-- ls -la ~/projects -->
+                <div class="command-line">
+                  <span class="typing typing-delay-4">ls -la ~/projects</span>
+                </div>
+                <div class="command-output">
+                  <p>
+                    Projects include <strong>Audio Cloning</strong>, <strong>CV apps</strong>, 
+                    <strong>NLP apps</strong>, and <strong>full-stack AI solutions</strong>.
+                  </p>
+                </div>
+              </div>              
+            </div>
+          </div>
         </div>
-        <div class="info">
-            <h1 class="title">About Me</h1>
-            
-            <p>My name is Wenhao He. I graduated from the <strong>University at Buffalo</strong> with an <strong>MSc in Engineering Science (Artificial Intelligence)</strong>, 
-                combined with a <strong>BSc in Computer Science</strong>. I bring a solid foundation in <strong>machine learning</strong>, <strong>data analytics</strong>, 
-                and <strong>software development</strong>, with proficiency in <strong>Python</strong>, <strong>SQL</strong>, <strong>JavaScript</strong>, 
-                <strong>React/React Native</strong>, <strong>Azure</strong>, <strong>AWS</strong>, <strong>Hadoop</strong>, and <strong>PySpark</strong>.</p>
+        
+        <!-- Experience Timeline -->
+        <h3 class="reveal mt-lg">Education & Experience</h3>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-date">Oct 2024 - Present</div>
+            <div class="timeline-title">Clipp (New York, NY)</div>
+            <div class="timeline-subtitle">Software Engineer Intern </div>
+            <p>Developed Flutter-based mobile & web UI, optimizing supplier workflows and reducing order time by 25%.</p>
+            <p>Collaborated on UX redesign with designers to improve onboarding and user experience.</p>
+            <p>Built a real-time chat system using GetStream, Firebase, and Flutter, enabling seamless 300+ supplier-buyer interactions.</p>
+            <p>Reduced downtime by 30% through bug fixes and designed an AI chatbot, improving automated order placement efficiency by 40%.</p>
+          </div>
 
-            <div class="btn-container">
-                <button
-                  class="btn btn-color"
-                  onclick="location.href='../others/Wenhao_He.pdf'"
-                >
-                    DOWNLOAD CV
+          <div class="timeline-item reveal reveal-delay-1">
+            <div class="timeline-date">Apr 2024 - Sep 2024</div>
+            <div class="timeline-title">CAN International Corp (New York, NY)</div>
+            <div class="timeline-subtitle">Software Engineer Intern </div>
+            <p>Built a scalable membership app with job search & event management, engaging 500+ users.</p>
+            <p>Optimized avatar loading from 2 minutes to seconds, improving UI speed & user experience.</p>
+            <p>Designed AI-powered document processing with NLP & Azure Logic Apps, reducing manual input by 70%.</p>
+            <p>Secured real-time data storage with Google Firebase, enhancing accessibility & performance.</p>
+          </div>
+
+          <div class="timeline-item reveal reveal-delay-2">
+            <div class="timeline-date">Aug 2022 - May 2024</div>
+            <div class="timeline-title">MSc in Engineering Science (AI)</div>
+            <div class="timeline-subtitle">University at Buffalo</div>
+            <p>Courseworks: Machine Learning, Deep Learning, Reinforcement Learning, Computer Vision, Pattern Recognition</p>
+          </div>
+          
+          <div class="timeline-item reveal reveal-delay-3">
+            <div class="timeline-date">Aug 2018 - May 2022</div>
+            <div class="timeline-title">BSc in Computer Science</div>
+            <div class="timeline-subtitle">University at Buffalo</div>
+            <p>Courseworks: Data Structures and Algorithms, Computer Networking, Systems Programming, Computational Linguistics</p>
+          </div>
+        </div>
+
+        <!-- Code snippet example -->
+        <div class="code-block reveal reveal-delay-3">
+          <div class="code-header">
+            <span>About Me in Python Code</span>
+            <button class="code-copy tooltip" data-tooltip="Copy code">
+              <span>Copy code</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                   viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              </svg>
+            </button>
+          </div>
+          <div class="code-content">
+            <pre>
+              <span class="keyword">def</span> <span class="function">summarize_experience</span>():
+                  <span class="keyword">return</span> {
+                      <span class="string">"name"</span>: <span class="string">"Wenhao He"</span>,
+                      <span class="string">"expertise"</span>: [<span class="string">"AI"</span>, <span class="string">"Machine Learning"</span>, <span class="string">"Data Analytics"</span>, <span class="string">"Software Development"</span>],
+                      <span class="string">"education"</span>: {
+                          <span class="string">"MSc"</span>: <span class="string">"Engineering Science (AI) - University at Buffalo"</span>,
+                          <span class="string">"BSc"</span>: <span class="string">"Computer Science - University at Buffalo"</span>
+                      },
+                      <span class="string">"Work Experience"</span>: {
+                          <span class="string">"Clipp (Software Engineer Intern, Oct 2024 - Present, New York, NY)"</span>,
+                          <span class="string">"CAN International Corp (Software Engineer Intern, Apr 2024 - Sep 2024, New York, NY)"</span>
+                      },
+                      <span class="string">"Project Experience"</span>: {
+                          <span class="string">"Movie Recommendation System (Aug 2024 - Present)"</span>,
+                          <span class="string">"Audio Cloning (Aug 2023 - Feb 2024)"</span>,
+                          <span class="string">"Monocular Depth Estimation (Jan 2023 - May 2023)"</span>,
+                          <span class="string">"Fruit/Vegetable Detection (Jan 2023 - May 2023)"</span>,
+                      },
+                      <span class="string">"skills"</span>: {
+                          <span class="string">"languages"</span>: [<span class="string">"Python"</span>, <span class="string">"TypeScript"</span>, <span class="string">"JavaScript"</span>, <span class="string">"C"</span>, <span class="string">"C++"</span>],
+                          <span class="string">"AI & ML"</span>: [<span class="string">"TensorFlow"</span>, <span class="string">"PyTorch"</span>, <span class="string">"OpenCV"</span>, <span class="string">"Scikit-learn"</span>, <span class="string">"NLP (spaCy, Transformers)"</span>],
+                          <span class="string">"Cloud & DevOps"</span>: [<span class="string">"AWS (SageMaker, S3)"</span>, <span class="string">"GCP"</span>, <span class="string">"Microsoft Azure"</span>, <span class="string">"Docker"</span>]
+                          <span class="string">"Frontend & UI"</span>: [<span class="string">"React"</span>, <span class="string">"React Native"</span>, <span class="string">"GraphQL"</span>, <span class="string">"Flutter"</span>, <span class="string">"Next.js"</span>]
+                          <span class="string">"Backend & Databases"</span>: [<span class="string">"Node.js,"</span>, <span class="string">"Django"</span>, <span class="string">"Flask"</span>, <span class="string">"SQL"</span>, <span class="string">"MongoDB"</span>, <span class="string">"MySQL"</span>]
+                          <span class="string">"Developer Tools"</span>: [<span class="string">"Git"</span>, <span class="string">"Datadog"</span>, <span class="string">"Figma"</span>, <span class="string">"VS Code"</span>, <span class="string">"IntelliJ IDEA"</span>, <span class="string">"PyCharm"</span>]
+                      },
+                  }  <span class="comment"># Always learning and improving</span>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION (unchanged) -->
+    <section class="section" id="skills">
+      <div class="bg-pattern grid"></div>
+      <div class="section-inner">
+        <h2 class="reveal">Skills</h2>
+        
+        <div class="skill-filters reveal">
+          <button class="skill-filter active" data-filter="all">All Skills</button>
+          <button class="skill-filter" data-filter="languages">Programming</button>
+          <button class="skill-filter" data-filter="libraries">Libraries</button>
+          <button class="skill-filter" data-filter="tools">Tools</button>
+        </div>
+        
+        <div class="skills-grid">
+
+          <!-- 1. PROGRAMMING -->
+          <div class="skill-card reveal" data-skill-cat="languages">
+            <h3 class="skill-heading">Programming</h3>
+            <p class="skill-description">
+              Developing scalable solutions across low-level systems and high-level scripting.
+            </p>
+        
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Python</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">TypeScript</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">JavaScript</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Java</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">C / C++</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+        
+            <!-- Tags -->
+            <div class="skill-tags">
+              <span class="tag">Python</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Java</span>
+              <span class="tag">C</span>
+              <span class="tag">C++</span>
+            </div>
+          </div>
+        
+          <!-- 2. AI & MACHINE LEARNING -->
+          <div class="skill-card reveal" data-skill-cat="libraries">
+            <h3 class="skill-heading">AI &amp; Machine Learning</h3>
+            <p class="skill-description">
+              Building intelligent systems with ML/DL frameworks for model training, computer vision, and NLP.
+            </p>
+        
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">TensorFlow</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">PyTorch</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">OpenCV</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">scikit-learn</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">NLP</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+        
+            <div class="skill-tags">
+              <span class="tag">TensorFlow</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">NLP (spaCy, Transformers)</span>
+            </div>
+          </div>
+        
+          <!-- 3. CLOUD & DEVOPS -->
+          <div class="skill-card reveal" data-skill-cat="tools">
+            <h3 class="skill-heading">Cloud &amp; DevOps</h3>
+            <p class="skill-description">
+              Deploying and managing scalable, containerized applications on cloud platforms.
+            </p>
+        
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">AWS</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">GCP</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Firebase</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Azure</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Docker</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+        
+            <div class="skill-tags">
+              <span class="tag">AWS (SageMaker, S3)</span>
+              <span class="tag">GCP</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Microsoft Azure</span>
+              <span class="tag">Docker</span>
+            </div>
+          </div>
+        
+          <!-- 4. FRONTEND & UI -->
+          <div class="skill-card reveal" data-skill-cat="tools">
+            <h3 class="skill-heading">Frontend &amp; UI</h3>
+            <p class="skill-description">
+              Developing dynamic, high-performance web and mobile applications with modern frameworks.
+            </p>
+        
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">React</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">React Native</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">GraphQL</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Flutter</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Next.js</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+        
+            <div class="skill-tags">
+              <span class="tag">React</span>
+              <span class="tag">React Native</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Next.js</span>
+            </div>
+          </div>
+        
+          <!-- 5. BACKEND & DATABASES -->
+          <div class="skill-card reveal" data-skill-cat="tools">
+            <h3 class="skill-heading">Backend &amp; Databases</h3>
+            <p class="skill-description">
+              Designing secure, efficient backends with relational and NoSQL databases.
+            </p>
+        
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Node.js</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Django</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Flask</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">SQL</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">MongoDB</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">MySQL</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+        
+            <div class="skill-tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">Django</span>
+              <span class="tag">Flask</span>
+              <span class="tag">SQL</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">MySQL</span>
+            </div>
+          </div>
+        
+          <!-- 6. DEVELOPER TOOLS -->
+          <div class="skill-card reveal" data-skill-cat="tools">
+            <h3 class="skill-heading">Developer Tools</h3>
+            <p class="skill-description">
+              Optimizing workflows with version control, monitoring, and modern IDEs.
+            </p>
+        
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Git</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Datadog</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 80%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">Figma</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 85%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">VS Code</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 90%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">IntelliJ IDEA</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 75%;"></div>
+              </div>
+            </div>
+            <div class="skill-proficiency">
+              <span class="skill-proficiency-label">PyCharm</span>
+              <div class="skill-proficiency-bar">
+                <div class="skill-proficiency-fill" style="--fill-width: 75%;"></div>
+              </div>
+            </div>
+        
+            <div class="skill-tags">
+              <span class="tag">Git</span>
+              <span class="tag">Datadog</span>
+              <span class="tag">Figma</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">IntelliJ IDEA</span>
+              <span class="tag">PyCharm</span>
+            </div>
+          </div>
+        </div>        
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section" id="projects">
+      <div class="bg-pattern circuit"></div>
+      <div class="section-inner">
+        <h2 class="reveal">Projects</h2>
+        
+        <div class="project-filters reveal">
+          <button class="project-filter active" data-filter="all">All Projects</button>
+          <button class="project-filter" data-filter="ai">AI/ML</button>
+          <button class="project-filter" data-filter="web">Web Development</button>
+        </div>
+        
+        <div class="projects-grid">
+          <!-- 1. MOVIE RECOMMENDATION SYSTEM -->
+          <div class="project-card reveal" data-project-cat="ai web">
+            <div class="project-header">
+              <h3 class="project-title">Movie Recommendation System</h3>
+            </div>
+            <div class="project-media">
+              <div class="project-image-container">
+                <img src="../images/page.png" alt="Movie Recommendation System" class="full-image">
+                <button class="expand-image-btn" data-image="../images/page.png" data-title="Movie Recommendation System Interface">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
                 </button>
+              </div>
             </div>
+            <div class="project-body">
+              <p class="project-description">
+                Built an AI-powered movie recommendation system using Transformer models & TMDb metadata for personalized content. 
+                Engineered a scalable ML pipeline with AWS S3 & SageMaker for real-time inference & deployment.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/JODGEW/Movie-Recommendation" class="project-link" target="_blank">
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">Transformers</span>
+                <span class="tech-item">API Integration</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. AUDIO CLONING -->
+          <div class="project-card reveal" data-project-cat="ai">
+            <div class="project-header">
+              <h3 class="project-title">Audio Cloning</h3>
+            </div>
+            <div class="project-media">
+              <div class="audio-player">
+                <audio id="audio-cloning-player" preload="metadata">
+                  <source src="../others/BOE_Ginsburg.mp3" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+                
+                <div class="audio-controls">
+                  <button class="play-btn" data-player="audio-cloning-player">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                  </button>
+                  <div class="progress-container">
+                    <div class="progress-bar">
+                      <div class="progress-indicator"></div>
+                    </div>
+                    <div class="time-display">0:00 / 0:00</div>
+                  </div>
+                </div>
+                
+                <!-- Fallback Download Link -->
+                <div class="audio-fallback">
+                  <a href="../others/BOE_Ginsburg.mp3" download class="download-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" 
+                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="7 10 12 15 17 10"></polyline>
+                      <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download Audio
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-description">
+                Developed a deep learning project to clone a judge's voice, enabling it to narrate the decision from the
+                Brown v. Board of Education civil rights case. Implemented advanced speech synthesis techniques for realistic voice generation.
+              </p>
+              <div class="project-links">
+                <a href="../others/AudioCloning_Paper.pdf" class="project-link" target="_blank">
+                  Paper (PDF)
+                </a>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-stack">
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">Python</span>
+                <span class="tech-item">Audio Processing</span>
+                <span class="tech-item">WaveNet</span>
+              </div>
+            </div>
+          </div>
+        
+          <!-- 3. MONOCULAR DEPTH ESTIMATION -->
+          <div class="project-card reveal" data-project-cat="ai">
+            <div class="project-header">
+              <h3 class="project-title">Monocular Depth Estimation</h3>
+            </div>
+            <div class="project-media">
+              <!-- Enhanced Image Display -->
+              <div class="project-image-container">
+                <img src="../images/MDE.png" alt="Monocular Depth Estimation" class="full-image">
+                <button class="expand-image-btn" data-image="../images/MDE.png" data-title="Monocular Depth Estimation">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-description">
+                Implemented encoder-decoder CNN architecture for estimating 3D distances from 2D images. The system can predict depth
+                information from a single image, enabling applications in robotics, autonomous vehicles, and augmented reality.
+              </p>
+              <div class="project-links">
+                <a href="../others/monocular_depth_estimation.pdf" class="project-link" target="_blank">
+                  Paper (PDF)
+                </a>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-stack">
+                <span class="tech-item">PyTorch</span>
+                <span class="tech-item">Computer Vision</span>
+                <span class="tech-item">CNN</span>
+                <span class="tech-item">OpenCV</span>
+              </div>
+            </div>
+          </div>
+        
+          <!-- 4. FRUIT/VEGETABLE DETECTION -->
+          <div class="project-card reveal" data-project-cat="ai">
+            <div class="project-header">
+              <h3 class="project-title">Fruit/Vegetable Detection</h3>
+            </div>
+            <div class="project-media">
+              <!-- Enhanced Image Display -->
+              <div class="project-image-container">
+                <img src="../images/CV.png" alt="Fruit/Vegetable Detection" class="full-image">
+                <button class="expand-image-btn" data-image="../images/CV.png" data-title="Fruit/Vegetable Detection Results">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <polyline points="9 21 3 21 3 15"></polyline>
+                    <line x1="21" y1="3" x2="14" y2="10"></line>
+                    <line x1="3" y1="21" x2="10" y2="14"></line>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-description">
+                Conducted a Computer Vision project to detect various fruits and vegetables in 2D images.
+                The system can identify 30+ different produce items with high accuracy, supporting applications
+                in retail automation and agricultural technology.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/JODGEW/Fruit-Classification" class="project-link" target="_blank">
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-stack">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">PyTorch</span>
+                <span class="tech-item">Computer Vision</span>
+                <span class="tech-item">Object Detection</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Image Modal (Add at bottom of body) -->
+        <div class="image-modal" id="image-modal">
+          <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h3 class="modal-title"></h3>
+            <div class="modal-image-container">
+              <img src="" alt="" class="modal-image">
+            </div>
+          </div>
         </div>
     </section>
 
-    <h1 class="title">Skills</h1>
-    <section id="skills">
-        <div class="container">
-            <div class="skills-category">
-                <h2 class="skill-title">Programming Languages and Database</h2>
-                <div class="skills-list">
-                    <img src="https://www.vectorlogo.zone/logos/python/python-horizontal.svg" alt="Python" height="50" width="100">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Sql_data_base_with_logo.png" alt="SQL" height="50" width="100">
-                    <img src="https://www.vectorlogo.zone/logos/javascript/javascript-horizontal.svg" alt="JavaScript">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg" alt="C" height="50" width="100">
-                    <img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-ar21.svg" alt="HTML">
-                    <img src="https://www.vectorlogo.zone/logos/w3_css/w3_css-official.svg" alt="CSS" height="50" width="100">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/LaTeX_logo.svg" alt="Latex" height="50" width="100">
-                    <img src="https://www.vectorlogo.zone/logos/mysql/mysql-ar21.svg" alt="MySQL">
-                    <img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg" alt="AWS">
-                    <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-ar21.svg" alt="Azure">
-                    <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-ar21.svg" alt="GCP">
-                </div>
-            </div>
-
-            <div class="skills-category">
-                <h2 class="skill-title">Libraries & Tools</h2>
-                <div class="skills-list">
-                    <img src="https://www.vectorlogo.zone/logos/opencv/opencv-ar21.svg" alt="OpenCV">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit Learn" height="50" width="100">
-                    <img src="data:image/svg+xml,%3Csvg%20id%3D%22Layer_1%22%20data-name%3D%22Layer%201%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20818.63%20331.21%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23130754%3B%7D.cls-2%7Bfill%3A%23ffca00%3B%7D.cls-3%7Bfill%3A%23e70488%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3EArtboard%2063%3C%2Ftitle%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M290.85%2C199.21c-10.27%2C0-20.73-4.25-27.28-12.58v45H243l0-111.09h18.6l.71%2C12.22c6.38-9.39%2C17.71-14.35%2C28.52-14.35%2C20.73%2C0%2C36%2C17.37%2C36%2C40.4S311.58%2C199.22%2C290.85%2C199.21Zm-6.37-65.55c-12.05%2C0-21.79%2C9.39-21.79%2C25.16S272.43%2C184%2C284.48%2C184s21.79-9.39%2C21.79-25.16S296.53%2C133.66%2C284.48%2C133.66Z%22%2F%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M404.36%2C197.1l-.71-12.22c-6.38%2C9.39-17.72%2C14.35-28.53%2C14.34-20.73%2C0-36-17.36-36-40.39s15.24-40.4%2C36-40.39c10.81%2C0%2C22.15%2C5%2C28.53%2C14.35l.71-12.22H423V197.1Zm-22.85-63.43c-12.05%2C0-21.79%2C9.39-21.8%2C25.16S369.45%2C184%2C381.5%2C184s21.8-9.39%2C21.8-25.16S393.56%2C133.67%2C381.51%2C133.67Z%22%2F%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M494.87%2C197.11V154.77c0-14.88-5.13-19.84-14.52-19.84-9.75%2C0-20.38%2C8.85-20.38%2C19.48v42.7H439.41V120.57H458.2l.89%2C14.18c5.14-9.75%2C16.65-16.3%2C28.35-16.3%2C20.37%2C0%2C28%2C14.18%2C28%2C33.13v45.54Z%22%2F%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M590.77%2C197.13l-.71-12.23c-6.38%2C9.39-17.72%2C14.35-28.52%2C14.35-20.73%2C0-36-17.37-36-40.4s15.24-40.39%2C36-40.39c10.27%2C0%2C20.72%2C4.26%2C27.28%2C12.58V90.83h20.56l0%2C106.3ZM567.92%2C133.7c-12%2C0-21.79%2C9.39-21.79%2C25.15S555.87%2C184%2C567.92%2C184s21.79-9.38%2C21.79-25.15S580%2C133.7%2C567.92%2C133.7Z%22%2F%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M686.6%2C197.14l-.71-12.22c-6.38%2C9.39-17.72%2C14.34-28.53%2C14.34-20.73%2C0-36-17.36-36-40.4s15.24-40.39%2C36-40.39c10.81%2C0%2C22.15%2C5%2C28.53%2C14.36l.71-12.23h18.6v76.53Zm-22.85-63.43c-12%2C0-21.79%2C9.39-21.8%2C25.16S651.7%2C184%2C663.74%2C184s21.8-9.39%2C21.8-25.16S675.8%2C133.71%2C663.75%2C133.71Z%22%2F%3E%3Cpath%20class%3D%22cls-1%22%20d%3D%22M750.73%2C199.63a60.16%2C60.16%2C0%2C0%2C1-30.65-8.69l3.37-14.17c6.2%2C3.72%2C15.59%2C8.51%2C26.93%2C8.51%2C8.15%2C0%2C13.82-2.48%2C13.82-8.86%2C0-5.49-5.85-7.44-16.3-9.92-18.78-4.08-25.51-14-25.51-24.81%2C0-12.05%2C9.39-23.38%2C30.12-23.38%2C12.58%2C0%2C23.57%2C5.49%2C26%2C6.91l-3.37%2C13.47A44.59%2C44.59%2C0%2C0%2C0%2C753%2C132.31c-8.32%2C0-12.4%2C2.83-12.4%2C7.44%2C0%2C5.13%2C5.32%2C7.44%2C13.46%2C9.39%2C20.2%2C4.25%2C28.35%2C13.64%2C28.35%2C23.92C782.45%2C189.53%2C770.4%2C199.63%2C750.73%2C199.63Z%22%2F%3E%3Crect%20class%3D%22cls-1%22%20x%3D%2274.88%22%20y%3D%2268.42%22%20width%3D%2224.09%22%20height%3D%2250.02%22%2F%3E%3Crect%20class%3D%22cls-1%22%20x%3D%2274.88%22%20y%3D%22171.17%22%20width%3D%2224.09%22%20height%3D%2250.02%22%2F%3E%3Crect%20class%3D%22cls-2%22%20x%3D%2274.88%22%20y%3D%22133.04%22%20width%3D%2224.09%22%20height%3D%2223.6%22%2F%3E%3Crect%20class%3D%22cls-1%22%20x%3D%2236.19%22%20y%3D%22109.55%22%20width%3D%2224.09%22%20height%3D%22166.27%22%2F%3E%3Crect%20class%3D%22cls-1%22%20x%3D%22112.78%22%20y%3D%22212.44%22%20width%3D%2224.09%22%20height%3D%2250.02%22%2F%3E%3Crect%20class%3D%22cls-1%22%20x%3D%22112.78%22%20y%3D%22109.61%22%20width%3D%2224.09%22%20height%3D%2250.02%22%2F%3E%3Crect%20class%3D%22cls-3%22%20x%3D%22112.78%22%20y%3D%22174.23%22%20width%3D%2224.09%22%20height%3D%2223.6%22%2F%3E%3Crect%20class%3D%22cls-1%22%20x%3D%22150.67%22%20y%3D%2255.39%22%20width%3D%2224.09%22%20height%3D%22166.27%22%2F%3E%3C%2Fsvg%3E" alt="Pandas" height="50" width="100">
-                    <img src="https://www.janmeppe.com/assets/2019-12-24-matplotlib/matplotlib.jpg" alt="Matplotlib">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/NumPy_logo_2020.svg" alt="Numpy">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/SCIPY_2.svg" alt="Scipy" height="50" width="100">
-                </div>
-            </div>
-
-            <div class="skills-category">
-                <h2 class="skill-title">Frameworks</h2>
-                <div class="skills-list">
-                    <img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-ar21.svg" alt="PyTorch">
-                    <img src="https://www.vectorlogo.zone/logos/apache_hadoop/apache_hadoop-ar21.svg" alt="Hadoop">
-                    <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-ar21.svg" alt="TensorFlow">
-                    <img src="https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg" alt="Spark">
-                    <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" alt="React">
-                    <img src="https://www.vectorlogo.zone/logos/palletsprojects_flask/palletsprojects_flask-ar21~v2.svg" alt="Flask">
-                    <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-horizontal.svg" alt="NodeJS">
-                </div>
-            </div>
-
-            <div class="skills-category">
-                <h2 class="skill-title">Developer Tools</h2>
-                <div class="skills-list">
-                    <img src="https://www.vectorlogo.zone/logos/docker/docker-official.svg" alt="Docker">
-                    <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-ar21.svg" alt="Kubernetes">
-                    <img src="https://www.vectorlogo.zone/logos/figma/figma-ar21.svg" alt="Figma">
-                    <img src="https://www.vectorlogo.zone/logos/slack/slack-ar21.svg" alt="Slack">
-                    <img src="https://www.vectorlogo.zone/logos/github/github-ar21.svg" alt="GitHub" >
-                    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg" alt="Git">
-                    <img src="https://www.vectorlogo.zone/logos/jupyter/jupyter-ar21.svg" alt="Jupyter">
-                </div>
-            </div>
+    <!-- CONTACT SECTION -->
+    <section class="section" id="contact">
+      <div class="section-inner reveal">
+        <h2>Contact Me</h2>
+        <p>
+          Have an idea, project, or just want to chat about AI? Let's connect! Reach out via email or LinkedIn!
+        </p>
+        <div class="contact-links">
+          <a href="mailto:wenhaohe8@gmail.com" class="contact-link" aria-label="Email me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            wenhaohe8@gmail.com
+          </a>
+          <a
+            href="https://www.linkedin.com/in/wenhao-he-77126a230"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+            aria-label="Connect on LinkedIn"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            Wenhao He
+          </a>
         </div>
+      </div>
     </section>
-    
+  </main>
 
-    <section id="projects">
-        <h1 class="title">Projects</h1>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <p>&copy; 2025 Wenhao He. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-        <div class="project-box-containers">
-            <div class="project-container">
-                <article class="project-item">
-                    <h3>Audio Cloning</h3>
-                    <p>Engaging in a Deep Learning project to clone a judge's voice, enabling it to narrate the decision from the Brown v. Board of Education civil rights case</p>
-                    <p>Supervised by <strong>Dr. David S. Doermann</strong></p>
-                    <audio controls>
-                        <source src="../others/BOE_Ginsburg.mp3" type="audio/mpeg">
-                        Your browser does not support the audio tag.
-                    </audio>
-                    <div class="btn-container">
-                        <button
-                        class="btn btn-color"
-                        onclick="location.href='../others/AudioCloning_Paper.pdf'"
-                        >
-                            Paper
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
+  <!-- Structured Data for SEO (JSON-LD) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Wenhao He",
+      "url": "https://wenhaohe.com",
+      "jobTitle": "Software Engineer",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University at Buffalo"
+      },
+      "knowsAbout": [
+        "Machine Learning",
+        "Data Analytics",
+        "Software Development",
+        "Computer Vision"
+      ],
+      "skills": [
+        "Python",
+        "SQL",
+        "JavaScript",
+        "TensorFlow",
+        "PyTorch",
+        "React",
+        "AWS",
+        "Azure"
+      ]
+    }
+  </script>
 
-        <div class="project-box-containers">
-            <div class="project-container">
-                <article class="project-item">
-                    <img src="../images/MDE.png" alt="Monocular Depth Estimation">
-                    <h3>Monocular Depth Estimation</h3>
-                    <p>Implemented encoder-decoder CNN architecture for estimating 3D distances from 2D images</p>
-                    <div class="btn-container">
-                        <button
-                          class="btn btn-color"
-                          onclick="location.href='../others/monocular_depth_estimation.pdf'"
-                        >
-                            Paper
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
-
-        <div class="project-box-containers">
-            <div class="project-container">
-                <article class="project-item">
-                    <img src="../images/page.png" alt="MOVIE RECOMMENDATION SYSTEM">
-                    <h3>Movie recommendation System</h3>
-                    <p>Developed a web app utilizing TMDb data for fetching movie details and IMDb data to train a custom transformer deep learning model for personalized movie recommendations</p>
-                    <div class="btn-container">
-                        <button
-                        class="btn btn-color"
-                        onclick="location.href='https://github.com/JODGEW/Movie-Recommendation'"
-                        >
-                            GitHub
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
-
-        <div class="project-box-containers">
-            <div class="project-container">
-                <article class="project-item">
-                    <video id="videoPlayer" controls>
-                        <source src="../others/YouTube.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <h3>YouTube Video Summarizer</h3>
-                    <p>Created a web application for transcribing, summarizing, and translating YouTube videos for users worldwide</p>
-                    <div class="btn-container">
-                        <button class="btn btn-color" onclick="location.href='https://github.com/JODGEW/YouTubeSummarizer'">
-                            GitHub
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
-
-        <div class="project-box-containers">
-            <div class="project-container">
-                <article class="project-item">
-                    <img src="../images/CV.png" alt="Detection on Fruit/Vegetables">
-                    <h3>Detection on Fruit/Vegetables in 2D Images</h3>
-                    <p>Conducted a Computer Vision project to detect various fruits and vegetables in 2D images</p>
-                    <div class="btn-container">
-                        <button
-                        class="btn btn-color"
-                        onclick="location.href='https://github.com/JODGEW/Fruit-Classification'"
-                        >
-                            GitHub
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h1 class="title">Contact Me</h1>
-        <p>If you have any questions or would like to connect, please don't hesitate to reach out</p>
-        <div class="contact-methods">
-            <div class="contact-info-container">
-                <img
-                  src="../images/email.png"
-                  alt="Email icon"
-                  class="icon contact-icon"
-                />
-                <p><strong><a href="mailto:your-email@example.com">wenhaohe8@gmail.com</a></p>
-            </div>
-            
-            <div class="contact-info-container">
-                <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="wenhao-he-77126a230">
-                    <a class="LI-simple-link" href="https://www.linkedin.com/in/wenhao-he-77126a230?trk=profile-badge"> </a>
-                </div>
-            </div>
-            <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>            
-
-        </div>
-    </section>
-
-    <footer>
-        <p>Copyright &copy; 2025 Wenhao He</p>
-    </footer>
-
+  <script src="script.js"></script>
 </body>
 </html>

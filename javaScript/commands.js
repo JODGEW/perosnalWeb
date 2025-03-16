@@ -73,7 +73,6 @@ function commander(cmd) {
             loopLines(banner, "", 80);
             break;
         default:
-            console.log("Unknown command: " + cmd);
             addLine("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
             break;
     }
