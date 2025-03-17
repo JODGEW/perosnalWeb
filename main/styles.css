@@ -483,12 +483,20 @@
     font-size: clamp(var(--font-size-lg), 3vw, var(--font-size-xl));
     margin-bottom: var(--space-lg);
     color: var(--text-color);
+    text-shadow: 0px 0px 10px rgba(0, 255, 170, 0.6);
+  }
+  .hero-subtitle:hover {
+    text-shadow: 0px 0px 15px rgba(0, 255, 170, 0.8);
+    transition: text-shadow 0.3s ease-in-out;
   }
   .hero-text {
     margin-bottom: var(--space-lg);
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    text-align: center;
   }
   .hero-cta {
     display: inline-flex;
@@ -497,7 +505,7 @@
     background-color: var(--accent-color);
     color: var(--bg-color);
     padding: var(--space-sm) var(--space-lg);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     font-weight: bold;
     transition: var(--transition);
     box-shadow: var(--shadow-md);
