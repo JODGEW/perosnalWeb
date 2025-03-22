@@ -1,4 +1,3 @@
-// DOM references
 const loadingOverlay = document.getElementById('loading-overlay');
 const header = document.getElementById('header');
 const nav = document.getElementById('main-nav');
@@ -9,13 +8,12 @@ const backToTop = document.getElementById('back-to-top');
 const sections = document.querySelectorAll('.section');
 const revealEls = document.querySelectorAll('.reveal');
 
-// Show the loading screen, then hide it after a delay
 window.addEventListener('load', () => {
   setTimeout(() => {
     loadingOverlay.classList.add('hidden');
     setTimeout(() => {
       loadingOverlay.style.display = 'none';
-      onScroll(); // Force reveal check after load
+      onScroll();
     }, 500);
   }, 1500);
 });
@@ -46,7 +44,7 @@ function smoothScroll(target, duration) {
   if (!element) return;
 
   const startPos = window.pageYOffset;
-  const endPos = element.offsetTop - 70; // offset for sticky header
+  const endPos = element.offsetTop - 70;
   const distance = endPos - startPos;
   let startTime = null;
 
@@ -74,32 +72,27 @@ window.addEventListener('scroll', onScroll);
 function onScroll() {
   const scrollTop = window.pageYOffset;
 
-  // Sticky header
   if (scrollTop > 50) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
 
-  // Back to top button visibility
   if (scrollTop > 300) {
     backToTop.classList.add('visible');
   } else {
     backToTop.classList.remove('visible');
   }
 
-  // Reveal elements on scroll
   revealEls.forEach(el => {
     if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
       el.classList.add('active');
     }
   });
 
-  // Update active nav link
   updateActiveNavLink(scrollTop);
 }
 
-// Back to top button functionality
 backToTop.addEventListener('click', () => {
   smoothScroll('#about', 800);
 });
@@ -123,14 +116,12 @@ function updateActiveNavLink(scrollTop) {
   });
 }
 
-// DOM references for media elements
 let audioPlayers = {};
 const imageModal = document.getElementById('image-modal');
 const modalImage = document.querySelector('.modal-image');
 const modalTitle = document.querySelector('.modal-title');
 const closeModalBtn = document.querySelector('.close-modal');
 
-// Initialize media elements after page load
 document.addEventListener('DOMContentLoaded', () => {
   initSkillFilters();
   initProjectFilters();
@@ -190,11 +181,9 @@ function initAudioPlayers() {
   const playButtons = document.querySelectorAll('.play-btn[data-player]');
 
   if (playButtons.length === 0) {
-    console.log('No audio play buttons found on the page');
+    console.error('No audio play buttons found on the page');
     return;
   }
-
-  console.log(`Found ${playButtons.length} audio player buttons`);
 
   playButtons.forEach(btn => {
     const playerId = btn.getAttribute('data-player');
@@ -205,14 +194,12 @@ function initAudioPlayers() {
       return;
     }
 
-    const progressIndicator = btn.closest('.audio-controls').querySelector('.progress-indicator');
+    const progressIndicator = btn.closest('.audio-controls').querySelector('.audio-progress-indicator');
     const timeDisplay = btn.closest('.audio-controls').querySelector('.time-display');
-    const progressBar = btn.closest('.audio-controls').querySelector('.progress-bar');
+    const progressBar = btn.closest('.audio-controls').querySelector('.audio-progress-bar');
 
-    // Ensure the audio is loaded
     audioElement.load();
 
-    // Store reference
     audioPlayers[playerId] = {
       audio: audioElement,
       button: btn,
@@ -220,24 +207,18 @@ function initAudioPlayers() {
       timeDisplay: timeDisplay
     };
 
-    // Log loaded metadata
     audioElement.addEventListener('loadedmetadata', () => {
-      console.log(`Audio ${playerId} loaded. Duration: ${audioElement.duration}s`);
       timeDisplay.textContent = `0:00 / ${formatTime(audioElement.duration)}`;
     });
 
-    // Error handling
     audioElement.addEventListener('error', e => {
       console.error(`Error loading audio ${playerId}:`, e);
       timeDisplay.textContent = "Error loading audio";
       timeDisplay.style.color = "var(--error-color)";
     });
 
-    // Play/Pause toggle
     btn.addEventListener('click', () => {
-      console.log(`Play button clicked for ${playerId}`);
 
-      // Pause other audio players first
       for (let id in audioPlayers) {
         if (id !== playerId && !audioPlayers[id].audio.paused) {
           audioPlayers[id].audio.pause();
@@ -246,14 +227,12 @@ function initAudioPlayers() {
         }
       }
 
-      // Toggle current audio
       if (audioElement.paused) {
         try {
           const playPromise = audioElement.play();
           if (playPromise !== undefined) {
             playPromise
               .then(() => {
-                console.log(`Audio ${playerId} playing successfully`);
                 btn.classList.add('playing');
                 btn.innerHTML = createPauseSVG();
               })
@@ -271,28 +250,24 @@ function initAudioPlayers() {
       }
     });
 
-    // Update progress/time
     audioElement.addEventListener('timeupdate', () => {
       const progress = (audioElement.currentTime / audioElement.duration) * 100;
       progressIndicator.style.width = `${progress}%`;
       timeDisplay.textContent = `${formatTime(audioElement.currentTime)} / ${formatTime(audioElement.duration)}`;
     });
 
-    // Seek by clicking on progress bar
     progressBar.addEventListener('click', e => {
       const rect = progressBar.getBoundingClientRect();
       const pos = (e.clientX - rect.left) / rect.width;
       audioElement.currentTime = pos * audioElement.duration;
     });
 
-    // Reset on end
     audioElement.addEventListener('ended', () => {
       btn.classList.remove('playing');
       btn.innerHTML = createPlaySVG();
       progressIndicator.style.width = '0%';
     });
 
-    // Set initial play icon
     btn.innerHTML = createPlaySVG();
   });
 }
@@ -311,7 +286,7 @@ function initImageExpansion() {
       modalTitle.textContent = imageTitle;
 
       imageModal.classList.add('open');
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
     });
   });
 
@@ -331,9 +306,8 @@ function initImageExpansion() {
 
   function closeImageModal() {
     imageModal.classList.remove('open');
-    document.body.style.overflow = ''; // Restore scrolling
+    document.body.style.overflow = '';
 
-    // Clear src after fade-out
     setTimeout(() => {
       if (!imageModal.classList.contains('open')) {
         modalImage.src = '';
@@ -342,7 +316,6 @@ function initImageExpansion() {
   }
 }
 
-// Format seconds to MM:SS
 function formatTime(seconds) {
   if (isNaN(seconds) || seconds === Infinity || seconds === null || seconds === undefined) {
     return '0:00';
@@ -352,7 +325,6 @@ function formatTime(seconds) {
   return `${mins}:${secs}`;
 }
 
-// Create play/pause icons
 function createPlaySVG() {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
            viewBox="0 0 24 24" fill="none" stroke="currentColor" 
@@ -376,32 +348,21 @@ function easeOutCubic(t, b, c, d) {
   return c * (t * t * t + 1) + b;
 }
 
-// Code Copy Functionality
 document.addEventListener('DOMContentLoaded', function() {
   const copyButtons = document.querySelectorAll('.code-copy');
   
   copyButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       const codeBlock = button.closest('.code-block').querySelector('pre');
-      const textToCopy = codeBlock.textContent;
-      
-      // Create a temporary textarea to copy the text
-      const textarea = document.createElement('textarea');
-      textarea.value = textToCopy;
-      textarea.style.position = 'fixed'; // Avoid scrolling to bottom
-      document.body.appendChild(textarea);
-      textarea.select();
+      const textToCopy = codeBlock.textContent.trim();
       
       try {
-        // Execute copy command
-        document.execCommand('copy');
+        await navigator.clipboard.writeText(textToCopy);
         
-        // Visual feedback
         const originalTooltip = button.getAttribute('data-tooltip');
         button.setAttribute('data-tooltip', 'Copied!');
         button.classList.add('copied');
         
-        // Reset tooltip after 2 seconds
         setTimeout(() => {
           button.setAttribute('data-tooltip', originalTooltip);
           button.classList.remove('copied');
@@ -409,9 +370,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
       } catch (err) {
         console.error('Failed to copy: ', err);
+        button.setAttribute('data-tooltip', 'Copy failed!');
+        
+        setTimeout(() => {
+          button.setAttribute('data-tooltip', 'Copy code');
+        }, 2000);
       }
-      
-      document.body.removeChild(textarea);
     });
   });
 });
