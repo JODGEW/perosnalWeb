@@ -66,6 +66,10 @@
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-full: 9999px;
+
+  --skill-bar-bg: rgba(81, 153, 117, 0.1);
+  --skill-bar-fill: rgba(81, 153, 117, 0.8);
+  --skill-bar-hover: #519975;
 }
 
 /* Reset & Box Sizing */
@@ -919,20 +923,24 @@ main {
 .skill-proficiency-bar {
   flex-grow: 1;
   height: 6px;
-  background-color: rgba(81, 153, 117, 0.1);
+  background-color: var(--skill-bar-bg);
   border-radius: var(--radius-full);
   position: relative;
   overflow: hidden;
+  z-index: 0;
 }
 .skill-proficiency-fill {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  background-color: var(--text-color);
+  background-color: var(--skill-bar-fill);
   width: 0;
   transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
   border-radius: var(--radius-full);
+  max-width: 100%;
+  z-index: 1;
+  overflow: hidden;
 }
 .skill-card.active .skill-proficiency-fill {
   width: var(--fill-width, 0%);
@@ -941,7 +949,7 @@ main {
   content: '';
   position: absolute;
   top: 0;
-  right: 0;
+  right: 1px;
   height: 100%;
   width: 4px;
   background-color: rgba(255, 255, 255, 0.3);
