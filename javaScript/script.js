@@ -123,6 +123,11 @@ const modalTitle = document.querySelector('.modal-title');
 const closeModalBtn = document.querySelector('.close-modal');
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Lucide icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
   initSkillFilters();
   initProjectFilters();
   initAudioPlayers();
@@ -224,6 +229,7 @@ function initAudioPlayers() {
           audioPlayers[id].audio.pause();
           audioPlayers[id].button.classList.remove('playing');
           audioPlayers[id].button.innerHTML = createPlaySVG();
+          if (typeof lucide !== 'undefined') lucide.createIcons();
         }
       }
 
@@ -235,6 +241,7 @@ function initAudioPlayers() {
               .then(() => {
                 btn.classList.add('playing');
                 btn.innerHTML = createPauseSVG();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
               })
               .catch(error => {
                 console.error(`Error playing audio ${playerId}:`, error);
@@ -247,6 +254,7 @@ function initAudioPlayers() {
         audioElement.pause();
         btn.classList.remove('playing');
         btn.innerHTML = createPlaySVG();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
       }
     });
 
@@ -265,10 +273,12 @@ function initAudioPlayers() {
     audioElement.addEventListener('ended', () => {
       btn.classList.remove('playing');
       btn.innerHTML = createPlaySVG();
+      if (typeof lucide !== 'undefined') lucide.createIcons();
       progressIndicator.style.width = '0%';
     });
 
     btn.innerHTML = createPlaySVG();
+    if (typeof lucide !== 'undefined') lucide.createIcons();
   });
 }
 
@@ -326,20 +336,11 @@ function formatTime(seconds) {
 }
 
 function createPlaySVG() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-           viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-  </svg>`;
+  return `<i data-lucide="play" class="play-icon"></i>`;
 }
 
 function createPauseSVG() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
-           viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="6" y="4" width="4" height="16"></rect>
-    <rect x="14" y="4" width="4" height="16"></rect>
-  </svg>`;
+  return `<i data-lucide="pause" class="play-icon"></i>`;
 }
 
 function easeOutCubic(t, b, c, d) {
@@ -350,32 +351,63 @@ function easeOutCubic(t, b, c, d) {
 
 document.addEventListener('DOMContentLoaded', function() {
   const copyButtons = document.querySelectorAll('.code-copy');
-  
+
   copyButtons.forEach(button => {
     button.addEventListener('click', async () => {
       const codeBlock = button.closest('.code-block').querySelector('pre');
       const textToCopy = codeBlock.textContent.trim();
-      
+
       try {
         await navigator.clipboard.writeText(textToCopy);
-        
+
         const originalTooltip = button.getAttribute('data-tooltip');
         button.setAttribute('data-tooltip', 'Copied!');
         button.classList.add('copied');
-        
+
         setTimeout(() => {
           button.setAttribute('data-tooltip', originalTooltip);
           button.classList.remove('copied');
         }, 2000);
-        
+
       } catch (err) {
         console.error('Failed to copy: ', err);
         button.setAttribute('data-tooltip', 'Copy failed!');
-        
+
         setTimeout(() => {
           button.setAttribute('data-tooltip', 'Copy code');
         }, 2000);
       }
     });
   });
+
+  // Email copy functionality
+  const emailCopyBtn = document.getElementById('email-copy');
+  if (emailCopyBtn) {
+    emailCopyBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const email = emailCopyBtn.getAttribute('data-email');
+      const emailText = emailCopyBtn.querySelector('.email-text');
+      const originalText = emailText.textContent;
+
+      try {
+        await navigator.clipboard.writeText(email);
+
+        emailText.textContent = 'Email Copied!';
+        emailCopyBtn.classList.add('copied');
+
+        setTimeout(() => {
+          emailText.textContent = originalText;
+          emailCopyBtn.classList.remove('copied');
+        }, 2000);
+
+      } catch (err) {
+        console.error('Failed to copy email: ', err);
+        emailText.textContent = 'Copy failed!';
+
+        setTimeout(() => {
+          emailText.textContent = originalText;
+        }, 2000);
+      }
+    });
+  }
 });

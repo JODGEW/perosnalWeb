@@ -23,6 +23,9 @@
   
   <!-- External CSS -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <!-- Matrix Rain Background -->
@@ -52,7 +55,9 @@
         id="menu-toggle"
         aria-label="Toggle navigation menu"
         aria-expanded="false"
-      >☰</button>
+      >
+        <i data-lucide="menu" class="nav-icon"></i>
+      </button>
 
       <!-- Navigation -->
       <nav id="main-nav">
@@ -72,11 +77,7 @@
 
   <!-- BACK TO TOP BUTTON -->
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-    <svg class="back-to-top-icon" xmlns="http://www.w3.org/2000/svg" 
-         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-         stroke-linejoin="round">
-      <path d="M12 19V5M5 12l7-7 7 7" />
-    </svg>
+    <i data-lucide="arrow-up" class="back-to-top-icon"></i>
   </button>
 
   <!-- MAIN CONTENT -->
@@ -85,24 +86,20 @@
     <section class="hero" id="home">
       <div class="tech-particles" id="tech-particles"></div>
       <div class="container hero-content">
-        <h1 class="hero-title reveal">Wenhao He</h1>
-        <h2 class="hero-subtitle reveal reveal-delay-1">Coding the Future, Engineering AI.</h2>
+        <h1 class="hero-title reveal">Wenhao He (Jacky)</h1>
+        <h2 class="hero-subtitle reveal reveal-delay-1">Ready to Build, Scale, and Innovate</h2>
         <p class="hero-text reveal reveal-delay-2">
-          AI & Software Engineer with a passion for Machine Learning, Deep Learning, and Full-Stack Development. 
-          UB graduate skilled in Python, TensorFlow, and cloud computing—crafting scalable, AI-driven solutions 
-          for real-world impact.
+          UB graduate (MSc in AI, BSc in CS) building production systems with React, TypeScript, Python, 
+          and cloud infrastructure. Experience at Clipp and CAN International delivering real-time platforms (500+ users), 
+          AI automation (70% efficiency gains), and scalable web applications.
         </p>
         <a href="../others/Wenhao_He.pdf" class="hero-cta resume-btn reveal reveal-delay-4" target="_blank">
+          <i data-lucide="file-text"></i>
           View Resume
         </a>
         <a href="#projects" class="hero-cta reveal reveal-delay-3">
+          <i data-lucide="arrow-right"></i>
           View My Projects
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-               viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="M12 5l7 7-7 7"></path>
-          </svg>
         </a>
       </div>
     </section>
@@ -137,7 +134,7 @@
                   <span class="typing typing-delay-1">whoami</span>
                 </div>
                 <div class="command-output">
-                  <span class="terminal-user"><strong>Wenhao He</strong></span>
+                  <span class="terminal-user"><strong>Wenhao He (Jacky)</strong></span>
                 </div>
                 <div class="command-output">
                   <p>
@@ -152,8 +149,9 @@
                 </div>
                 <div class="command-output">
                   <p>
-                    Machine Learning, data analytics, software dev. Skilled in Python, TypeScript, JavaScript, 
-                    React/React Native, GraphQL, Azure, AWS, GCP.
+                    Machine Learning, Deep Learning, NLP, Computer Vision, Full-Stack Development. 
+                    Proficient in Python, TypeScript, JavaScript, React/React Native, GraphQL, 
+                    TensorFlow, PyTorch, Azure, AWS, GCP, Docker.
                   </p>
                 </div>
               
@@ -183,40 +181,41 @@
         </div>
         
         <!-- Experience Timeline -->
-        <h3 class="reveal mt-lg">Education & Experience</h3>
+        <h3 class="reveal mt-lg">Experience</h3>
         <div class="timeline">
           <div class="timeline-item reveal">
             <div class="timeline-date">Nov 2024 - Jun 2025</div>
             <div class="timeline-title">Clipp (New York, NY)</div>
-            <div class="timeline-subtitle">Software Engineer Intern </div>
-            <p>Developed a Flutter-based mobile/web app, streamlining supplier workflows and cutting order steps for 30% efficiency gain.</p>
-            <p>Built a real-time chat system (GetStream, Firebase, Flutter) enabling seamless communication for 500+ users.</p>
-            <p>Designed an AI chatbot for automated ordering ( 40% faster) and a prototype that cut restaurant manual work by 60%.</p>
-            <p>Achieved 90%+ branch coverage on a complete page with unit and regression tests, improving early bug detection.</p>
-            <p>Collaborated on UX redesigns to enhance onboarding and user experience for early supplier and buyer users.</p>
+            <div class="timeline-subtitle">Software Engineer</div>
+            <p>Engineered ML-driven features and pipelines, enhancing system efficiency, user engagement, and content relevance in production environments.</p>
+            <p>Developed scalable, full-stack applications using React, TypeScript, GraphQL, and Flutter, improving workflows and boosting operational efficiency by 30%.</p>
+            <p>Optimized data pipelines and architecture for low-latency, reliable performance in AI and high-traffic systems.</p>
+            <p>Built and deployed a real-time chat platform (GetStream, Firebase, TypeScript) using an event-triggered design for instant client updates, supporting 500+ concurrent users.</p>
+            <p>Automated testing and quality checks, achieving 90%+ branch coverage for critical workflows, ensuring stability and maintainability in production releases.</p>
           </div>
 
           <div class="timeline-item reveal reveal-delay-1">
             <div class="timeline-date">Apr 2024 - Oct 2024</div>
-            <div class="timeline-title">CAN International Corp (New York, NY)</div>
-            <div class="timeline-subtitle">Software Engineer Intern </div>
-            <p>Built a scalable membership app with job search & event management, engaging 500+ users.</p>
-            <p>Optimized avatar loading from 2 minutes to seconds, improving UI speed & user experience.</p>
-            <p>Designed AI-powered document processing with NLP & Azure Logic Apps, reducing manual input by 70%.</p>
-            <p>Secured real-time data storage with Google Firebase, enhancing accessibility & performance.</p>
+            <div class="timeline-title">CAN International (New York, NY)</div>
+            <div class="timeline-subtitle">Software Engineer</div>
+            <p>Initiated and led development of a membership app with job search and event features, engaging 300+ users.</p>
+            <p>Customized Azure Document Intelligence pipelines to extract structured job data (title, salary, qualifications) for automated downstream processing.</p>
+            <p>Built Azure Functions triggers for real-time NLP updates, improving responsiveness.</p>
+            <p>Integrated Firebase for low-latency storage and rapid access, supporting real-time analytics and app performance.</p>
+            <p>Reduced avatar load time from minutes to seconds, greatly improving UI responsiveness and user experience.</p>
           </div>
 
           <div class="timeline-item reveal reveal-delay-2">
             <div class="timeline-date">Aug 2022 - May 2024</div>
             <div class="timeline-title">MSc in Engineering Science (AI)</div>
-            <div class="timeline-subtitle">University at Buffalo</div>
+            <div class="timeline-subtitle">University at Buffalo, SUNY</div>
             <p>Courseworks: Machine Learning, Deep Learning, Reinforcement Learning, Computer Vision, Pattern Recognition</p>
           </div>
           
           <div class="timeline-item reveal reveal-delay-3">
             <div class="timeline-date">Aug 2018 - May 2022</div>
             <div class="timeline-title">BSc in Computer Science</div>
-            <div class="timeline-subtitle">University at Buffalo</div>
+            <div class="timeline-subtitle">University at Buffalo, SUNY</div>
             <p>Courseworks: Data Structures and Algorithms, Computer Networking, Systems Programming, Computational Linguistics</p>
           </div>
         </div>
@@ -227,12 +226,7 @@
             <span>About Me in Python Code</span>
             <button class="code-copy tooltip" data-tooltip="Copy code">
               <span>Copy code</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
-                   viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-              </svg>
+              <i data-lucide="copy"></i>
             </button>
           </div>
           <div class="code-content">
@@ -245,26 +239,27 @@
                       <span class="string">"name"</span>: <span class="string">"Wenhao He"</span>,
                       <span class="string">"expertise"</span>: [<span class="string">"AI"</span>, <span class="string">"Machine Learning"</span>, <span class="string">"Data Analytics"</span>, <span class="string">"Software Development"</span>],
                       <span class="string">"education"</span>: {
-                          <span class="string">"MSc"</span>: <span class="string">"Engineering Science (AI) - University at Buffalo"</span>,
-                          <span class="string">"BSc"</span>: <span class="string">"Computer Science - University at Buffalo"</span>
+                          <span class="string">"MSc"</span>: <span class="string">"Engineering Science (AI) - University at Buffalo, SUNY"</span>,
+                          <span class="string">"BSc"</span>: <span class="string">"Computer Science - University at Buffalo, SUNY"</span>
                       },
                       <span class="string">"Work Experience"</span>: {
-                          <span class="string">"Clipp (Software Engineer Intern, Oct 2024 - Present, New York, NY)"</span>,
-                          <span class="string">"CAN International Corp (Software Engineer Intern, Apr 2024 - Sep 2024, New York, NY)"</span>
+                          <span class="string">"Clipp (Software Engineer, Oct 2024 - Jun 2025, New York, NY)"</span>,
+                          <span class="string">"CAN International (Software Engineer, Apr 2024 - Sep 2024, New York, NY)"</span>
                       },
                       <span class="string">"Project Experience"</span>: {
-                          <span class="string">"Movie Recommendation System (Aug 2024 - Present)"</span>,
+                          <span class="string">"Personal Blog Platform (June 2025 - Aug 2025)"</span>,
+                          <span class="string">"Movie Recommendation System (Aug 2024 - Dec 2024)"</span>,
                           <span class="string">"Audio Cloning (Aug 2023 - Feb 2024)"</span>,
                           <span class="string">"Monocular Depth Estimation (Jan 2023 - May 2023)"</span>,
                           <span class="string">"Fruit/Vegetable Detection (Jan 2023 - May 2023)"</span>,
                       },
                       <span class="string">"skills"</span>: {
                           <span class="string">"languages"</span>: [<span class="string">"Python"</span>, <span class="string">"TypeScript"</span>, <span class="string">"JavaScript"</span>, <span class="string">"C"</span>, <span class="string">"C++"</span>],
-                          <span class="string">"AI & ML"</span>: [<span class="string">"TensorFlow"</span>, <span class="string">"PyTorch"</span>, <span class="string">"OpenCV"</span>, <span class="string">"Scikit-learn"</span>, <span class="string">"NLP (spaCy, Transformers)"</span>],
-                          <span class="string">"Cloud & DevOps"</span>: [<span class="string">"AWS (SageMaker, S3)"</span>, <span class="string">"GCP"</span>, <span class="string">"Microsoft Azure"</span>, <span class="string">"Docker"</span>]
-                          <span class="string">"Frontend & UI"</span>: [<span class="string">"React"</span>, <span class="string">"React Native"</span>, <span class="string">"GraphQL"</span>, <span class="string">"Flutter"</span>, <span class="string">"Next.js"</span>]
-                          <span class="string">"Backend & Databases"</span>: [<span class="string">"Node.js,"</span>, <span class="string">"Django"</span>, <span class="string">"Flask"</span>, <span class="string">"SQL"</span>, <span class="string">"MongoDB"</span>, <span class="string">"MySQL"</span>]
-                          <span class="string">"Developer Tools"</span>: [<span class="string">"Git"</span>, <span class="string">"Datadog"</span>, <span class="string">"Figma"</span>, <span class="string">"VS Code"</span>, <span class="string">"IntelliJ IDEA"</span>, <span class="string">"PyCharm"</span>]
+                          <span class="string">"AI & ML"</span>: [<span class="string">"LLM"</span>, <span class="string">"NLP"</span>, <span class="string">"TensorFlow"</span>, <span class="string">"PyTorch"</span>, <span class="string">"Scikit-learn"</span>, <span class="string">"OpenCV"</span>, <span class="string">"spaCy"</span>],
+                          <span class="string">"Cloud & DevOps"</span>: [<span class="string">"AWS"</span>, <span class="string">"GCP"</span>, <span class="string">"Microsoft Azure"</span>, <span class="string">"Docker"</span>],
+                          <span class="string">"Frontend & UI"</span>: [<span class="string">"React"</span>, <span class="string">"React Native"</span>, <span class="string">"Next.js"</span>, <span class="string">"Flutter"</span>],
+                          <span class="string">"Backend & Databases"</span>: [<span class="string">"GraphQL"</span>, <span class="string">"Node.js,"</span>, <span class="string">"Jest"</span>, <span class="string">"MongoDB"</span>, <span class="string">"Django"</span>, <span class="string">"Flask"</span>, <span class="string">"SQL"</span>, <span class="string">"MySQL"</span>],
+                          <span class="string">"Developer Tools"</span>: [<span class="string">"Git"</span>, <span class="string">"Datadog"</span>, <span class="string">"Figma"</span>, <span class="string">"VS Code"</span>, <span class="string">"IntelliJ IDEA"</span>, <span class="string">"PyCharm"</span>],
                       },
                   }  <span class="comment"># Always learning and improving</span>
             </pre>
@@ -290,7 +285,7 @@
 
           <!-- 1. PROGRAMMING -->
           <div class="skill-card reveal" data-skill-cat="languages">
-            <h3 class="skill-heading">Programming</h3>
+            <h3 class="skill-heading"><i data-lucide="code-2"></i> Programming</h3>
             <p class="skill-description">
               Developing scalable solutions across low-level systems and high-level scripting.
             </p>
@@ -339,7 +334,7 @@
         
           <!-- 2. AI & MACHINE LEARNING -->
           <div class="skill-card reveal" data-skill-cat="libraries">
-            <h3 class="skill-heading">AI &amp; Machine Learning</h3>
+            <h3 class="skill-heading"><i data-lucide="brain"></i> AI &amp; Machine Learning</h3>
             <p class="skill-description">
               Building intelligent systems with ML/DL frameworks for model training, computer vision, and NLP.
             </p>
@@ -386,7 +381,7 @@
         
           <!-- 3. CLOUD & DEVOPS -->
           <div class="skill-card reveal" data-skill-cat="tools">
-            <h3 class="skill-heading">Cloud &amp; DevOps</h3>
+            <h3 class="skill-heading"><i data-lucide="cloud"></i> Cloud &amp; DevOps</h3>
             <p class="skill-description">
               Deploying and managing scalable, containerized applications on cloud platforms.
             </p>
@@ -433,7 +428,7 @@
         
           <!-- 4. FRONTEND & UI -->
           <div class="skill-card reveal" data-skill-cat="tools">
-            <h3 class="skill-heading">Frontend &amp; UI</h3>
+            <h3 class="skill-heading"><i data-lucide="layout"></i> Frontend &amp; UI</h3>
             <p class="skill-description">
               Developing dynamic, high-performance web and mobile applications with modern frameworks.
             </p>
@@ -480,7 +475,7 @@
         
           <!-- 5. BACKEND & DATABASES -->
           <div class="skill-card reveal" data-skill-cat="tools">
-            <h3 class="skill-heading">Backend &amp; Databases</h3>
+            <h3 class="skill-heading"><i data-lucide="database"></i> Backend &amp; Databases</h3>
             <p class="skill-description">
               Designing secure, efficient backends with relational and NoSQL databases.
             </p>
@@ -534,7 +529,7 @@
         
           <!-- 6. DEVELOPER TOOLS -->
           <div class="skill-card reveal" data-skill-cat="tools">
-            <h3 class="skill-heading">Developer Tools</h3>
+            <h3 class="skill-heading"><i data-lucide="wrench"></i> Developer Tools</h3>
             <p class="skill-description">
               Optimizing workflows with version control, monitoring, and modern IDEs.
             </p>
@@ -612,13 +607,7 @@
               <div class="project-image-container">
                 <img src="../images/page.png" alt="Movie Recommendation System" class="full-image">
                 <button class="expand-image-btn" data-image="../images/page.png" data-title="Movie Recommendation System Interface">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <polyline points="9 21 3 21 3 15"></polyline>
-                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                  </svg>
+                  <i data-lucide="expand"></i>
                 </button>
               </div>
             </div>
@@ -629,7 +618,7 @@
               </p>
               <div class="project-links">
                 <a href="https://github.com/JODGEW/Movie-Recommendation" class="project-link" target="_blank">
-                  GitHub
+                  <i data-lucide="github"></i> GitHub
                 </a>
               </div>
             </div>
@@ -657,10 +646,7 @@
                 
                 <div class="audio-controls">
                   <button class="play-btn" data-player="audio-cloning-player">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                    </svg>
+                    <i data-lucide="play" class="play-icon"></i>
                   </button>
                   <div class="audio-progress-container">
                     <div class="audio-progress-bar">
@@ -678,7 +664,7 @@
               </p>
               <div class="project-links">
                 <a href="../others/AudioCloning_Paper.pdf" class="project-link" target="_blank">
-                  Paper (PDF)
+                  <i data-lucide="file-text"></i> Paper (PDF)
                 </a>
               </div>
             </div>
@@ -702,13 +688,7 @@
               <div class="project-image-container">
                 <img src="../images/MDE.png" alt="Monocular Depth Estimation" class="full-image">
                 <button class="expand-image-btn" data-image="../images/MDE.png" data-title="Monocular Depth Estimation">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <polyline points="9 21 3 21 3 15"></polyline>
-                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                  </svg>
+                  <i data-lucide="expand"></i>
                 </button>
               </div>
             </div>
@@ -719,7 +699,7 @@
               </p>
               <div class="project-links">
                 <a href="../others/monocular_depth_estimation.pdf" class="project-link" target="_blank">
-                  Paper (PDF)
+                  <i data-lucide="file-text"></i> Paper (PDF)
                 </a>
               </div>
             </div>
@@ -743,13 +723,7 @@
               <div class="project-image-container">
                 <img src="../images/CV.png" alt="Fruit/Vegetable Detection" class="full-image">
                 <button class="expand-image-btn" data-image="../images/CV.png" data-title="Fruit/Vegetable Detection Results">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <polyline points="9 21 3 21 3 15"></polyline>
-                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                  </svg>
+                  <i data-lucide="expand"></i>
                 </button>
               </div>
             </div>
@@ -761,7 +735,7 @@
               </p>
               <div class="project-links">
                 <a href="https://github.com/JODGEW/Fruit-Classification" class="project-link" target="_blank">
-                  GitHub
+                  <i data-lucide="github"></i> GitHub
                 </a>
               </div>
             </div>
@@ -798,7 +772,7 @@
           <div class="blog-card">
             <div class="blog-card-header">
               <div class="blog-icon-wrapper">
-                <div class="blog-icon">📝</div>
+                <div class="blog-icon"><i data-lucide="pen-tool"></i></div>
               </div>
               <div class="blog-header-content">
                 <h3>Technical Blog</h3>
@@ -811,21 +785,22 @@
             
             <div class="blog-card-content">
               <p>
-                Explore my insights on system design, architecture patterns, and engineering solutions. 
-                Currently focused on scalable system design concepts with plans to expand into AI/ML and development tips.
+                Deep dives into Machine Learning fundamentals and System Design patterns.
+                From neural networks to transformers, and from video streaming to ticketing platforms, 
+                explore practical insights and architectural solutions.
               </p>
               
               <div class="blog-features">
                 <div class="feature-item">
-                  <div class="feature-icon">🏗️</div>
+                  <div class="feature-icon"><i data-lucide="brain"></i></div>
+                  <span>Machine Learning</span>
+                </div>
+                <div class="feature-item">
+                  <div class="feature-icon"><i data-lucide="network"></i></div>
                   <span>System Design</span>
                 </div>
                 <div class="feature-item">
-                  <div class="feature-icon">⚡</div>
-                  <span>Architecture Patterns</span>
-                </div>
-                <div class="feature-item">
-                  <div class="feature-icon">🛠️</div>
+                  <div class="feature-icon"><i data-lucide="settings"></i></div>
                   <span>Engineering Solutions</span>
                 </div>
               </div>
@@ -834,11 +809,7 @@
             <div class="blog-card-footer">
               <a href="https://blog.wenhaohe.com" class="blog-visit-btn" target="_blank" rel="noopener noreferrer">
                 <span>Visit My Blog</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" 
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17l9.2-9.2M17 17V7H7"></path>
-                </svg>
+                <i data-lucide="external-link"></i>
               </a>
               
               <div class="blog-tech-stack">
@@ -857,34 +828,21 @@
       <div class="section-inner reveal">
         <h2>Contact Me</h2>
         <p>
-          Have an idea, project, or just want to chat about AI? Let's connect! Reach out via email or LinkedIn!
+          Have an idea, project, or just want to chat about AI? Let's connect!
         </p>
         <div class="contact-links">
-          <a href="mailto:wenhaohe8@gmail.com" class="contact-link" aria-label="Email me">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            wenhaohe8@gmail.com
+          <a href="#" class="contact-link" id="email-copy" data-email="wenhaohe8@gmail.com" aria-label="Copy email address to clipboard" title="Click to copy email">
+            <i data-lucide="mail"></i>
+            <span class="email-text">wenhaohe8@gmail.com</span>
           </a>
           <a
-            href="https://www.linkedin.com/in/wenhao-he-77126a230"
+            href="https://www.linkedin.com/in/jacky-wenhao-he-77126a230"
             target="_blank"
             rel="noopener noreferrer"
             class="contact-link"
             aria-label="Connect on LinkedIn"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                 aria-hidden="true">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-              <rect x="2" y="9" width="4" height="12"/>
-              <circle cx="4" cy="4" r="2"/>
-            </svg>
+            <i data-lucide="linkedin"></i>
             Wenhao He
           </a>
         </div>
