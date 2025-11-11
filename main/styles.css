@@ -2,22 +2,33 @@
               TERMINAL THEME & LAYOUT
 ============================================ */
 :root {
+  /* Backgrounds */
   --bg-color: #211D1B;
   --bg-alt: #2c2826;
   --bg-terminal: #1D1916;
   --bg-code: #1A1714;
-  --text-color: #519975;
-  --accent-color: #73ABAD;
-  --secondary-color: #9C8394;
-  --highlight-color: #B89076;
-  --light-text: #DCDCCC;
+
+  /* Primary text + accents */
+  --text-color: #40E0A5;      /* main terminal text */
+  --accent-color: #6FE5C6;    /* links, prompts, interactive */
+  --secondary-color: #8F7FA0; /* subtle labels, meta text */
+  --light-text: #DCDCCC;      /* headings, strong contrast */
+
+  /* Highlights */
+  --highlight-color: #B89076; /* tags, special spans */
+
+  /* Chrome / structure */
   --border-color: #3d3632;
+
+  /* Semantic states */
   --error-color: #FF5F56;
   --warning-color: #FFBD2E;
   --success-color: #27C93F;
-  --codeReturn-color: #CC7832;
-  --code-color: #6A8759;
-  --comment-color: #808080;
+
+  /* Code syntax */
+  --codeReturn-color: #CC7832; /* keywords / return / fn */
+  --code-color: #6A8759;       /* strings / identifiers */
+  --comment-color: #808080;    /* comments */
 
   /* Transparent variants for subtle overlays */
   --text-alpha-07: rgba(220, 220, 204, 0.07);
@@ -2234,5 +2245,152 @@ footer {
   
   .blog-tech-stack {
     justify-content: center;
+  }
+
+  /* About section mobile */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .about-image {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Code block mobile */
+  .code-block {
+    padding: var(--space-sm);
+  }
+
+  .code-content {
+    font-size: var(--font-size-xs);
+  }
+
+  .code-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+
+  /* Terminal window mobile */
+  .terminal-content {
+    font-size: var(--font-size-sm);
+  }
+
+  .command-output {
+    padding-left: 12px;
+    font-size: var(--font-size-sm);
+  }
+
+  /* Skills grid mobile */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Projects grid mobile */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hero CTAs mobile */
+  .hero-content {
+    padding: 0 var(--space-sm);
+  }
+
+  .hero-cta {
+    font-size: var(--font-size-sm);
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --space-xs: 6px;
+    --space-sm: 12px;
+    --space-md: 18px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --font-size-xs: 0.7rem;
+    --font-size-sm: 0.8rem;
+    --font-size-md: 0.9rem;
+    --font-size-lg: 1.1rem;
+    --font-size-xl: 1.3rem;
+    --font-size-2xl: 1.6rem;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .section-inner {
+    padding: 0 var(--space-sm);
+  }
+
+  header {
+    height: 60px;
+  }
+
+  header.scrolled {
+    height: 55px;
+  }
+
+  .logo {
+    font-size: var(--font-size-md);
+  }
+
+  h1 { font-size: var(--font-size-xl); }
+  h2 { font-size: var(--font-size-lg); }
+  h3 { font-size: var(--font-size-md); }
+
+  .hero-text {
+    font-size: var(--font-size-sm);
+  }
+
+  .skill-proficiency-label {
+    width: 60px;
+    font-size: 0.65rem;
+  }
+
+  .timeline {
+    padding-left: var(--space-md);
+  }
+
+  .timeline-item::before {
+    left: calc(-1 * var(--space-md) + 1px);
+    width: 12px;
+    height: 12px;
+  }
+
+  .contact-link {
+    min-width: auto;
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .back-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .back-to-top-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  nav {
+    width: 85%;
+    padding: 70px var(--space-sm);
+  }
+
+  .project-card {
+    margin-bottom: var(--space-md);
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: var(--space-sm);
   }
 }

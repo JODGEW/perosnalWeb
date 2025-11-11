@@ -7,12 +7,24 @@ var commands = [];
 var git = 0;
 
 setTimeout(function() {
-    loopLines(banner, "", 80);
+    // Detect if mobile and show appropriate banner
+    var isMobile = window.innerWidth <= 768;
+    loopLines(isMobile ? mobileBanner : banner, "", 80);
     textarea.focus();
 }, 100);
 
 window.addEventListener("keyup", enterKey);
 window.addEventListener("touchstart", focusTextarea); // For mobile touch support
+
+// Handle orientation changes and window resizing
+var currentWidth = window.innerWidth;
+window.addEventListener("resize", function() {
+    var newWidth = window.innerWidth;
+    // Check if we've crossed the mobile/desktop threshold
+    if ((currentWidth <= 768 && newWidth > 768) || (currentWidth > 768 && newWidth <= 768)) {
+        currentWidth = newWidth;
+    }
+});
 
 textarea.value = "";
 command.innerHTML = textarea.value;
@@ -60,17 +72,18 @@ function commander(cmd) {
         case "start":
             loopLines(start, "color2 margin", 80);
             setTimeout(function() {
-                window.location.href = "/main/";
+                window.location.href = "./main/index.html";
             }, 1000); // Wait 1 second before redirecting
             break;
         case "clear":
             setTimeout(function() {
-                terminal.innerHTML = '<a id="before"></a>';
+                terminal.innerHTML = '<div class="ascii-art"><a id="before"></a></div>';
                 before = document.getElementById("before");
             }, 1);
             break;
         case "banner":
-            loopLines(banner, "", 80);
+            var isMobile = window.innerWidth <= 768;
+            loopLines(isMobile ? mobileBanner : banner, "", 80);
             break;
         default:
             addLine("<span class=\"inherit\">Command not found. For a list of commands, type <span class=\"command\">'help'</span>.</span>", "error", 100);
@@ -118,8 +131,27 @@ var help = [
     "<br>",
 ];
 
+var mobileBanner = [
+  "<span class=\"welcome\">Welcome to <span class=\"name\">Wenhao He</span> terminal!</span>",
+  "<br>",
+  "        ___________________",
+  "      .' _________________  '.",
+  "     | |                   | |",
+  "     | | if __name__==     | |",
+  "     | |   \"__main__\":     | |",
+  "     | |  print(\"Hello\")   | |",
+  "     | |___________________| |",
+  "     '._____________________.'",
+  "         _____|     |_____",
+  "        /_________________\\",
+  "<br>",
+  "         Wenhao He",
+  "<br>",
+  "<span class=\"color2\">Type</span> <span class=\"command\">'help'</span> <span class=\"color2\">for commands</span>",
+];
+
 var banner = [
-  '<span class="index">Welcome to Wenhao He terminal access page! All rights reserved.</span>',
+  "<span class=\"welcome\">Welcome to <span class=\"name\">Wenhao He</span> terminal access page! All rights reserved.</span>",
   "                 _________________________________________                                 ",
   "               .'  _____________________________________  '.                               ",
   "              \"| .'                                     '. |                               ",
@@ -141,13 +173,13 @@ var banner = [
   "    /      \"/ .-.-. .-----.-.-.-.-.-.-.-.-.-.-.-----. .-.-. \\         \\\"\"    \\       \\    ",
   "   /      \":-------------------------------------------------:         \\\"\"    \\       \\   ",
   "  /       \"`---._.-------------------------------------._.---'          '=---='        \\  ",
-  " /                                                                                       \\ ",
+  " /                                                                                      \\ ",
   "------------------------------------------------------------------------------------------",
-  "                     __        __         _                   _   _                    ",
-  "                     \\ \\      / /__ _ __ | |__   __ _  ___   | | | | ___              ",
-  "                      \\ \\ /\\ / / _ \\ '_ \\| '_ \\ / _` |/ _ \\  | |_| |/ _ \\             ",
-  "                       \\ V  V /  __/ | | | | | | (_| | (_) | |  _  |  __/             ",
-  "                        \\_/\\_/ \\___|_| |_|_| |_|\\__,_|\\___/  |_| |_|\\___|             ",
+  "                       __        __         _                   _   _                       ",
+  "                       \\ \\      / /__ _ __ | |__   __ _  ___   | | | | ___                 ",
+  "                        \\ \\ /\\ / / _ \\ '_ \\| '_ \\ / _` |/ _ \\  | |_| |/ _ \\                ",
+  "                         \\ V  V /  __/ | | | | | | (_| | (_) | |  _  |  __/                ",
+  "                          \\_/\\_/ \\___|_| |_|_| |_|\\__,_|\\___/  |_| |_|\\___|                ",
   "                                                                                      ",
   "<span class=\"color2\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color2\">.</span>",
 ];
