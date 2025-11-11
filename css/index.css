@@ -3,7 +3,7 @@ body {
   padding: 15px 20px;
   min-height: 99%;
   width: 100%;
-  color: #519975;
+  color: #40E0A5;
   background: #211D1B;
   font-family: cursor, monospace;
   overflow-x: hidden;
@@ -30,8 +30,25 @@ b {
   text-decoration: underline;
 }
 
+#terminal {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.terminal-content {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .ascii-art {
   width: 100%;
+  text-align: center;
   overflow-x: auto;
 }
 
@@ -94,7 +111,7 @@ b {
 }
 
 #liner::before {
-  color: #519975;
+  color: #6FE5C6;
   content: "visitor@wenhaohe:~$";
 }
 
@@ -139,13 +156,27 @@ p {
   color: #DCDCCC;
 }
 
+.welcome {
+  color: #DCDCCC;
+  font-weight: 400;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+.name {
+  color: #40E0A5;
+  text-shadow: 0 0 5px #40E0A5;
+  font-weight: bold;
+}
+
+
 .color2 {
   color: #B89076;
 }
 
 .command {
-  color: #73ABAD;
-  text-shadow: 0 0 5px #73ABAD; 
+  color: #6FE5C6;
+  text-shadow: 0 0 5px #6FE5C6; 
 }
 
 .error {
