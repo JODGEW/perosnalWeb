@@ -7,21 +7,39 @@
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
 </head>
 <body>
-    <div id="terminal">
-        <div class="ascii-art">
-            <a id="before"></a>
-        </div>
+    <!-- CRT transition overlay -->
+    <div id="crt-transition">
+      <div class="crt-scanline"></div>
+      <div class="crt-text">Loading Portfolio<span class="crt-dots">...</span></div>
     </div>
-    <div id="command" onclick="document.getElementById('texter').focus();">
-        <textarea
-            id="texter"
-            onkeyup="typeIt(this, event)"
-            onkeydown="typeIt(this, event); moveIt(this.value.length, event)"
-            onkeypress="typeIt(this, event);"
-            autofocus
-        ></textarea>
-        <div id="liner">
-            <span id="typer"></span><b class="cursor" id="cursor">█</b>
+
+    <div id="window">
+        <div id="titlebar">
+            <div class="titlebar-buttons">
+                <span class="btn btn-close"></span>
+                <span class="btn btn-minimize"></span>
+                <span class="btn btn-maximize"></span>
+            </div>
+            <div class="titlebar-title">visitor@wenhaohe — zsh — 80×24</div>
+        </div>
+        <div id="terminal-body">
+            <div id="terminal">
+                <div class="ascii-art">
+                    <a id="before"></a>
+                </div>
+            </div>
+            <div id="command" onclick="document.getElementById('texter').focus();">
+                <textarea
+                    id="texter"
+                    onkeyup="typeIt(this, event)"
+                    onkeydown="typeIt(this, event); moveIt(this.value.length, event)"
+                    onkeypress="typeIt(this, event);"
+                    autofocus
+                ></textarea>
+                <div id="liner">
+                    <span id="typer"></span><b class="cursor" id="cursor">█</b>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./javaScript/main.js"></script>

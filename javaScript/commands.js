@@ -70,10 +70,16 @@ function commander(cmd) {
             loopLines(help, "color2 margin", 80);
             break;
         case "start":
-            loopLines(start, "color2 margin", 80);
+            document.getElementById("command").style.display = "none";
+            var duration = loopLines(start, "color2 margin", 80);
             setTimeout(function() {
-                window.location.href = "./main/index.html";
-            }, 1000); // Wait 1 second before redirecting
+                // Trigger CRT transition, then redirect after animation
+                var overlay = document.getElementById("crt-transition");
+                overlay.classList.add("active");
+                setTimeout(function() {
+                    window.location.href = "./main/index.html";
+                }, 1200);
+            }, duration + 300);
             break;
         case "clear":
             setTimeout(function() {
@@ -108,7 +114,12 @@ function addLine(text, style, time) {
 
         before.parentNode.insertBefore(next, before);
 
-        window.scrollTo(0, document.body.offsetHeight);
+        var tb = document.getElementById("terminal-body");
+        if (tb) {
+            tb.scrollTop = tb.scrollHeight;
+        } else {
+            window.scrollTo(0, document.body.offsetHeight);
+        }
     }, time);
 }
 
@@ -116,18 +127,20 @@ function loopLines(name, style, time) {
     name.forEach(function(item, index) {
         addLine(item, style, index * time);
     });
+    return (name.length - 1) * time;
 }
 
 var start = [
-    "Navigating to the main page...",
+    "Executing portfolio entry…...",
 ];
 
 var help = [
     "<br>",
+    '<span class="color2">Available commands:</span>',
     '<span class="command">clear</span>          Clear terminal',
-    '<span class="command">start</span>          Start exploring my main page',
+    '<span class="command">start</span>          Enter the portfolio',
     '<span class="command">banner</span>         Display the terminal ASCII banner',
-    '<span class="command">help</span>           Display infomationn about builtin commands',
+    '<span class="command">help</span>           Display information about built-in commands',
     "<br>",
 ];
 
@@ -151,7 +164,7 @@ var mobileBanner = [
 ];
 
 var banner = [
-  "<span class=\"welcome\">Welcome to <span class=\"name\">Wenhao He</span> terminal access page! All rights reserved.</span>",
+  "<span class=\"welcome\">Welcome to <span class=\"name\">Wenhao He</span> Terminal Access.</span>",
   "                 _________________________________________                                 ",
   "               .'  _____________________________________  '.                               ",
   "              \"| .'                                     '. |                               ",
@@ -175,11 +188,11 @@ var banner = [
   "  /       \"`---._.-------------------------------------._.---'          '=---='        \\  ",
   " /                                                                                      \\ ",
   "------------------------------------------------------------------------------------------",
-  "                       __        __         _                   _   _                       ",
-  "                       \\ \\      / /__ _ __ | |__   __ _  ___   | | | | ___                 ",
-  "                        \\ \\ /\\ / / _ \\ '_ \\| '_ \\ / _` |/ _ \\  | |_| |/ _ \\                ",
-  "                         \\ V  V /  __/ | | | | | | (_| | (_) | |  _  |  __/                ",
-  "                          \\_/\\_/ \\___|_| |_|_| |_|\\__,_|\\___/  |_| |_|\\___|                ",
+  "             __        __         _                   _   _                       ",
+  "             \\ \\      / /__ _ __ | |__   __ _  ___   | | | | ___                 ",
+  "              \\ \\ /\\ / / _ \\ '_ \\| '_ \\ / _` |/ _ \\  | |_| |/ _ \\                ",
+  "               \\ V  V /  __/ | | | | | | (_| | (_) | |  _  |  __/                ",
+  "                \\_/\\_/ \\___|_| |_|_| |_|\\__,_|\\___/  |_| |_|\\___|                ",
   "                                                                                      ",
-  "<span class=\"color2\">For a list of available commands, type</span> <span class=\"command\">'help'</span><span class=\"color2\">.</span>",
+  "<span class=\"color2\">Type</span> <span class=\"command\">'help'</span><span class=\"color2\"> to see available commands.</span>",
 ];

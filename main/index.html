@@ -32,14 +32,7 @@
   <canvas class="matrix-rain" id="matrix-rain"></canvas>
 
   <!-- Loading Screen -->
-  <div class="loading-overlay" id="loading-overlay">
-    <div class="terminal-loader">
-      <div class="loading-text">Loading portfolio...</div>
-      <div class="loading-progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-    </div>
-  </div>
+  <div class="loading-overlay" id="loading-overlay" style="display:none"></div>
 
   <!-- HEADER -->
   <header id="header">
@@ -89,18 +82,25 @@
         <h1 class="hero-title reveal">Wenhao He (Jacky)</h1>
         <h2 class="hero-subtitle reveal reveal-delay-1">Ready to Build, Scale, and Innovate</h2>
         <p class="hero-text reveal reveal-delay-2">
-          UB graduate (MSc in AI, BSc in CS) building production systems with React, TypeScript, Python, 
-          and cloud infrastructure. Experience at Clipp and CAN International delivering real-time platforms (500+ users), 
-          AI automation (70% efficiency gains), and scalable web applications.
+          Software Engineer with 2+ years of experience building production full-stack and AI-powered systems using Python, TypeScript, React, and cloud platforms
         </p>
-        <a href="../others/Wenhao_He.pdf" class="hero-cta resume-btn reveal reveal-delay-4" target="_blank">
-          <i data-lucide="file-text"></i>
-          View Resume
-        </a>
-        <a href="#projects" class="hero-cta reveal reveal-delay-3">
-          <i data-lucide="arrow-right"></i>
-          View My Projects
-        </a>
+        <div class="command-bar-inner reveal reveal-delay-3">
+          <a href="#projects" class="cmd-link cmd-primary">
+            <span class="cmd-prompt">$</span> ls ~/projects
+          </a>
+          <a href="../others/Wenhao_He.pdf" class="cmd-link" target="_blank">
+            <span class="cmd-prompt">$</span> open resume.pdf
+          </a>
+          <a href="#about" class="cmd-link">
+            <span class="cmd-prompt">$</span> cat about.txt
+          </a>
+          <a href="https://blog.wenhaohe.com" target="_blank" rel="noopener noreferrer" class="cmd-link">
+            <span class="cmd-prompt">$</span> open blog
+          </a>
+          <a href="#contact" class="cmd-link">
+            <span class="cmd-prompt">$</span> contact
+          </a>
+        </div>
       </div>
     </section>
 
@@ -125,21 +125,20 @@
                   <div class="terminal-button terminal-button-minimize"></div>
                   <div class="terminal-button terminal-button-maximize"></div>
                 </div>
-                <div class="terminal-title">wenhaohe@macbook: ~/portfolio</div>
+                <div class="terminal-title">visitor@wenhaohe: ~/portfolio</div>
               </div>
 
               <div class="terminal-content">
                 <!-- whoami -->
                 <div class="command-line">
-                  <span class="typing typing-delay-1">whoami</span>
+                  <span class="typing typing-delay-1">(base) visitor@wenhaohe ~ % whoami</span>
                 </div>
                 <div class="command-output">
                   <span class="terminal-user"><strong>Wenhao He (Jacky)</strong></span>
                 </div>
                 <div class="command-output">
                   <p>
-                    I'm a UB graduate with an <strong>MSc in Engineering Science (AI)</strong> & a 
-                    <strong>BSc in Computer Science</strong>.
+                    <strong>AI / Full-Stack / Cloud</strong>
                   </p>
                 </div>
               
@@ -149,9 +148,10 @@
                 </div>
                 <div class="command-output">
                   <p>
-                    Machine Learning, Deep Learning, NLP, Computer Vision, Full-Stack Development. 
-                    Proficient in Python, TypeScript, JavaScript, React/React Native, GraphQL, 
-                    TensorFlow, PyTorch, Azure, AWS, GCP, Docker.
+                    Python, TypeScript, JavaScript, C, C++, React/React Native, GraphQL, SQL, MySQL, 
+                    CI/CD (GitHub Actions, Vercel), AWS (Certified Developer – Associate, DVA-C02), GCP, 
+                    Firebase, Microsoft Azure, Docker, Machine Learning, Deep Learning, NLP, Computer Vision, 
+                    TensorFlow, PyTorch, Full-Stack Development
                   </p>
                 </div>
               
@@ -186,10 +186,9 @@
           <div class="timeline-item reveal">
             <div class="timeline-date">Nov 2024 - Jun 2025</div>
             <div class="timeline-title">Clipp (New York, NY)</div>
-            <div class="timeline-subtitle">Software Engineer</div>
-            <p>Engineered ML-driven features and pipelines, enhancing system efficiency, user engagement, and content relevance in production environments.</p>
-            <p>Developed scalable, full-stack applications using React, TypeScript, GraphQL, and Flutter, improving workflows and boosting operational efficiency by 30%.</p>
-            <p>Optimized data pipelines and architecture for low-latency, reliable performance in AI and high-traffic systems.</p>
+            <div class="timeline-subtitle">Software Engineer (AI/Full-Stack)</div>
+            <p>Collaborated in Agile/Scrum teams using Jira and Git to integrate AI-powered chatbot workflows (Botpress) into production, enhancing user engagement and content relevance.</p>
+            <p>Developed scalable full-stack applications (React, TypeScript, GraphQL, REST APIs, Flutter), improving workflows and boosting efficiency by 30%.</p>
             <p>Built and deployed a real-time chat platform (GetStream, Firebase, TypeScript) using an event-triggered design for instant client updates, supporting 500+ concurrent users.</p>
             <p>Automated testing and quality checks, achieving 90%+ branch coverage for critical workflows, ensuring stability and maintainability in production releases.</p>
           </div>
@@ -199,7 +198,7 @@
             <div class="timeline-title">CAN International (New York, NY)</div>
             <div class="timeline-subtitle">Software Engineer</div>
             <p>Initiated and led development of a membership app with job search and event features, engaging 300+ users.</p>
-            <p>Customized Azure Document Intelligence pipelines to extract structured job data (title, salary, qualifications) for automated downstream processing.</p>
+            <p>Customized Azure Document Intelligence pipelines to extract structured job data (title, salary, qualifications), boosting downstream automation efficiency by 40%.</p>
             <p>Built Azure Functions triggers for real-time NLP updates, improving responsiveness.</p>
             <p>Integrated Firebase for low-latency storage and rapid access, supporting real-time analytics and app performance.</p>
             <p>Reduced avatar load time from minutes to seconds, greatly improving UI responsiveness and user experience.</p>
@@ -207,7 +206,7 @@
 
           <div class="timeline-item reveal reveal-delay-2">
             <div class="timeline-date">Aug 2022 - May 2024</div>
-            <div class="timeline-title">MSc in Engineering Science (AI)</div>
+            <div class="timeline-title">MSc in Engineering Science (Artificial Intelligence)</div>
             <div class="timeline-subtitle">University at Buffalo, SUNY</div>
             <p>Courseworks: Machine Learning, Deep Learning, Reinforcement Learning, Computer Vision, Pattern Recognition</p>
           </div>
@@ -237,9 +236,9 @@
                   <span class="string">"""</span>
                   <span class="keyword">return</span> {
                       <span class="string">"name"</span>: <span class="string">"Wenhao He"</span>,
-                      <span class="string">"expertise"</span>: [<span class="string">"AI"</span>, <span class="string">"Machine Learning"</span>, <span class="string">"Data Analytics"</span>, <span class="string">"Software Development"</span>],
+                      <span class="string">"expertise"</span>: [<span class="string">"Artificial Intelligence"</span>, <span class="string">"Machine Learning"</span>, <span class="string">"Data Analytics"</span>, <span class="string">"Software Development"</span>],
                       <span class="string">"education"</span>: {
-                          <span class="string">"MSc"</span>: <span class="string">"Engineering Science (AI) - University at Buffalo, SUNY"</span>,
+                          <span class="string">"MSc"</span>: <span class="string">"Engineering Science (Artificial Intelligence) - University at Buffalo, SUNY"</span>,
                           <span class="string">"BSc"</span>: <span class="string">"Computer Science - University at Buffalo, SUNY"</span>
                       },
                       <span class="string">"Work Experience"</span>: {
@@ -247,7 +246,7 @@
                           <span class="string">"CAN International (Software Engineer, Apr 2024 - Sep 2024, New York, NY)"</span>
                       },
                       <span class="string">"Project Experience"</span>: {
-                          <span class="string">"Personal Blog Platform (June 2025 - Aug 2025)"</span>,
+                          <span class="string">"Personal Blog Platform (June 2025 - Present)"</span>,
                           <span class="string">"Movie Recommendation System (Aug 2024 - Dec 2024)"</span>,
                           <span class="string">"Audio Cloning (Aug 2023 - Feb 2024)"</span>,
                           <span class="string">"Monocular Depth Estimation (Jan 2023 - May 2023)"</span>,
@@ -256,7 +255,7 @@
                       <span class="string">"skills"</span>: {
                           <span class="string">"languages"</span>: [<span class="string">"Python"</span>, <span class="string">"TypeScript"</span>, <span class="string">"JavaScript"</span>, <span class="string">"C"</span>, <span class="string">"C++"</span>],
                           <span class="string">"AI & ML"</span>: [<span class="string">"LLM"</span>, <span class="string">"NLP"</span>, <span class="string">"TensorFlow"</span>, <span class="string">"PyTorch"</span>, <span class="string">"Scikit-learn"</span>, <span class="string">"OpenCV"</span>, <span class="string">"spaCy"</span>],
-                          <span class="string">"Cloud & DevOps"</span>: [<span class="string">"AWS"</span>, <span class="string">"GCP"</span>, <span class="string">"Microsoft Azure"</span>, <span class="string">"Docker"</span>],
+                          <span class="string">"Cloud & DevOps"</span>: [<span class="string">"AWS (Certified Developer - Associate)"</span>, <span class="string">"GCP"</span>, <span class="string">"Microsoft Azure"</span>, <span class="string">"Docker"</span>],
                           <span class="string">"Frontend & UI"</span>: [<span class="string">"React"</span>, <span class="string">"React Native"</span>, <span class="string">"Next.js"</span>, <span class="string">"Flutter"</span>],
                           <span class="string">"Backend & Databases"</span>: [<span class="string">"GraphQL"</span>, <span class="string">"Node.js,"</span>, <span class="string">"Jest"</span>, <span class="string">"MongoDB"</span>, <span class="string">"Django"</span>, <span class="string">"Flask"</span>, <span class="string">"SQL"</span>, <span class="string">"MySQL"</span>],
                           <span class="string">"Developer Tools"</span>: [<span class="string">"Git"</span>, <span class="string">"Datadog"</span>, <span class="string">"Figma"</span>, <span class="string">"VS Code"</span>, <span class="string">"IntelliJ IDEA"</span>, <span class="string">"PyCharm"</span>],
@@ -285,7 +284,7 @@
 
           <!-- 1. PROGRAMMING -->
           <div class="skill-card reveal" data-skill-cat="languages">
-            <h3 class="skill-heading"><i data-lucide="code-2"></i> Programming</h3>
+            <h3 class="skill-heading"><i data-lucide="monitor"></i> Programming</h3>
             <p class="skill-description">
               Developing scalable solutions across low-level systems and high-level scripting.
             </p>
@@ -428,7 +427,7 @@
         
           <!-- 4. FRONTEND & UI -->
           <div class="skill-card reveal" data-skill-cat="tools">
-            <h3 class="skill-heading"><i data-lucide="layout"></i> Frontend &amp; UI</h3>
+            <h3 class="skill-heading"><i data-lucide="code-2"></i> Frontend &amp; UI</h3>
             <p class="skill-description">
               Developing dynamic, high-performance web and mobile applications with modern frameworks.
             </p>
@@ -778,7 +777,7 @@
                 <h3>Technical Blog</h3>
                 <div class="blog-status">
                   <span class="status-indicator"></span>
-                  <span>Active Writing</span>
+                  <span>Recent: AWS DVA-C02 notes</span>
                 </div>
               </div>
             </div>
@@ -828,7 +827,7 @@
       <div class="section-inner reveal">
         <h2>Contact Me</h2>
         <p>
-          Have an idea, project, or just want to chat about AI? Let's connect!
+          Let's connect!
         </p>
         <div class="contact-links">
           <a href="#" class="contact-link" id="email-copy" data-email="wenhaohe8@gmail.com" aria-label="Copy email address to clipboard" title="Click to copy email">
@@ -853,7 +852,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container footer-content">
-      <p>&copy; 2025 Wenhao He. All Rights Reserved.</p>
+      <p>&copy;2026 Wenhao He</p>
     </div>
   </footer>
 

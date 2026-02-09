@@ -9,13 +9,9 @@ const sections = document.querySelectorAll('.section');
 const revealEls = document.querySelectorAll('.reveal');
 
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    loadingOverlay.classList.add('hidden');
-    setTimeout(() => {
-      loadingOverlay.style.display = 'none';
-      onScroll();
-    }, 500);
-  }, 1500);
+  loadingOverlay.classList.add('hidden');
+  loadingOverlay.style.display = 'none';
+  onScroll();
 });
 
 // Mobile menu toggle
@@ -34,7 +30,7 @@ navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const targetId = link.getAttribute('href');
-    smoothScroll(targetId, 700);
+    smoothScroll(targetId, 400);
   });
 });
 
@@ -94,7 +90,7 @@ function onScroll() {
 }
 
 backToTop.addEventListener('click', () => {
-  smoothScroll('#about', 800);
+  smoothScroll('#about', 400);
 });
 
 // Update nav link state based on scroll position
