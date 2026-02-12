@@ -30,7 +30,7 @@ navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
     const targetId = link.getAttribute('href');
-    smoothScroll(targetId, 400);
+    smoothScroll(targetId, 150);
   });
 });
 
@@ -90,7 +90,7 @@ function onScroll() {
 }
 
 backToTop.addEventListener('click', () => {
-  smoothScroll('#about', 400);
+  smoothScroll('#about', 300);
 });
 
 // Update nav link state based on scroll position

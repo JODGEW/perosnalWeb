@@ -77,7 +77,7 @@ function commander(cmd) {
                 var overlay = document.getElementById("crt-transition");
                 overlay.classList.add("active");
                 setTimeout(function() {
-                    window.location.href = "./main/index.html";
+                    window.location.href = "../index.html";
                 }, 1200);
             }, duration + 300);
             break;
