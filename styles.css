@@ -77,7 +77,7 @@
 
   /* Z-index */
   --z-header: 1000;
-  --z-overlay: 9999;
+  --z-overlay: 10001;
 
   /* Border radii */
   --radius-sm: 4px;
@@ -1101,17 +1101,20 @@ main { flex: 1; padding-top: 72px; }
 .image-modal.open {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   opacity: 1;
+  overflow-y: auto;
+  padding: var(--space-lg) 0;
 }
 .modal-content {
   position: relative;
-  width: 90%; max-width: 1100px; max-height: 90vh;
+  width: 90%; max-width: 1100px;
   background-color: #fff;
   border: none;
   border-radius: var(--radius-lg);
   padding: var(--space-md);
   box-shadow: var(--shadow-lg);
+  margin: auto;
 }
 .modal-title {
   color: var(--text-color);
@@ -1120,13 +1123,11 @@ main { flex: 1; padding-top: 72px; }
   font-size: var(--font-size-lg);
 }
 .modal-image-container {
-  max-width: 90vw; max-height: 90vh;
   display: flex; justify-content: center; align-items: center;
 }
 .modal-image {
-  width: auto; height: auto;
-  max-width: 100%; max-height: 100%;
-  object-fit: contain;
+  width: 100%; height: auto;
+  display: block;
 }
 .close-modal {
   position: absolute;

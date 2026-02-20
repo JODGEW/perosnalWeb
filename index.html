@@ -83,7 +83,8 @@
         <h1 class="hero-title reveal reveal-delay-1">Wenhao He <span class="hero-accent">(Jacky)</span></h1>
         <h2 class="hero-subtitle reveal reveal-delay-2">Ready to Build, Scale, and Innovate</h2>
         <p class="hero-text reveal reveal-delay-3">
-          Software Engineer with 2+ years of experience building production full-stack and AI-powered systems using Python, TypeScript, React, and cloud platforms
+          Software Engineer with professional experience building production full-stack and 
+          AI-powered systems using TypeScript, React, Python, and cloud platforms
         </p>
         <div class="command-bar-inner reveal reveal-delay-4">
           <a href="#projects" class="cmd-link cmd-primary">
@@ -157,7 +158,7 @@
                 <div class="about-info-row">
                   <span class="about-info-label">Projects</span>
                   <span class="about-info-value">
-                    <strong>Audio Cloning</strong>, <strong>CV apps</strong>,
+                    <strong>Serverless AI Apps</strong>, <strong>Audio Cloning</strong>, <strong>CV apps</strong>,
                     <strong>NLP apps</strong>, and <strong>full-stack AI solutions</strong>.
                   </span>
                 </div>
@@ -236,7 +237,7 @@
             <span class="string">"frontend"</span>:  [<span class="string">"React"</span>, <span class="string">"React Native"</span>, <span class="string">"Next.js"</span>, <span class="string">"Flutter"</span>],
             <span class="string">"backend"</span>:   [<span class="string">"GraphQL"</span>, <span class="string">"Node.js"</span>, <span class="string">"Django"</span>, <span class="string">"Flask"</span>],
             <span class="string">"ai_ml"</span>:     [<span class="string">"TensorFlow"</span>, <span class="string">"PyTorch"</span>, <span class="string">"OpenCV"</span>, <span class="string">"scikit-learn"</span>],
-            <span class="string">"cloud"</span>:     [<span class="string">"AWS"</span>, <span class="string">"Docker"</span>, <span class="string">"GCP"</span>, <span class="string">"Azure"</span>],
+            <span class="string">"cloud"</span>:     [<span class="string">"AWS (Lambda, Bedrock, DynamoDB)"</span>, <span class="string">"Docker"</span>, <span class="string">"GCP"</span>, <span class="string">"Azure"</span>],
         }
 
     <span class="keyword">@property</span>
@@ -402,7 +403,13 @@
             </div>
 
             <div class="skill-tags">
-              <span class="tag">AWS (SageMaker, S3)</span>
+              <span class="tag">AWS Lambda</span>
+              <span class="tag">DynamoDB</span>
+              <span class="tag">Bedrock</span>
+              <span class="tag">Textract</span>
+              <span class="tag">S3</span>
+              <span class="tag">Cognito</span>
+              <span class="tag">CloudFront</span>
               <span class="tag">GCP</span>
               <span class="tag">Firebase</span>
               <span class="tag">Microsoft Azure</span>
@@ -583,7 +590,46 @@
         </div>
 
         <div class="projects-grid">
-          <!-- 1. MOVIE RECOMMENDATION SYSTEM -->
+          <!-- 1. RESUMEMATCH -->
+          <div class="project-card reveal" data-project-cat="ai web">
+            <div class="project-header">
+              <h3 class="project-title">ResumeMatch</h3>
+            </div>
+            <div class="project-media">
+              <div class="project-image-container">
+                <img src="./images/resumeMatch.PNG" alt="ResumeMatch" class="full-image">
+                <button class="expand-image-btn" data-image="./images/resumeMatch.PNG" data-title="ResumeMatch - AI Resume Analyzer">
+                  <i data-lucide="expand"></i>
+                </button>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-description">
+                Serverless AI resume analyzer built on AWS. Designed an event-driven 
+                pipeline (S3 → Lambda → Textract → Bedrock) for 4-pass LLM analysis 
+                including keyword extraction, match scoring, and resume rewriting. 
+                Deployed as a React/TypeScript SPA with Cognito auth, DynamoDB persistence, 
+                and CloudFront delivery.
+              </p>
+              <div class="project-links">
+                <a href="https://dgmqki2zr9mzh.cloudfront.net" class="project-link" target="_blank" rel="noopener noreferrer">
+                  <i data-lucide="external-link"></i> Live Demo
+                </a>
+              </div>
+            </div>
+            <div class="project-footer">
+              <div class="project-tech-stack">
+                <span class="tech-item">AWS Lambda</span>
+                <span class="tech-item">DynamoDB</span>
+                <span class="tech-item">Bedrock</span>
+                <span class="tech-item">Textract</span>
+                <span class="tech-item">React</span>
+                <span class="tech-item">TypeScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. MOVIE RECOMMENDATION SYSTEM -->
           <div class="project-card reveal" data-project-cat="ai web">
             <div class="project-header">
               <h3 class="project-title">Movie Recommendation System</h3>
@@ -733,16 +779,6 @@
           </div>
         </div>
 
-        <!-- Image Modal -->
-        <div class="image-modal" id="image-modal">
-          <div class="modal-content">
-            <button class="close-modal">&times;</button>
-            <h3 class="modal-title"></h3>
-            <div class="modal-image-container">
-              <img src="" alt="" class="modal-image">
-            </div>
-          </div>
-        </div>
     </section>
 
     <!-- BLOG SECTION -->
@@ -872,6 +908,17 @@
       ]
     }
   </script>
+
+  <!-- Image Modal -->
+  <div class="image-modal" id="image-modal">
+    <div class="modal-content">
+      <button class="close-modal">&times;</button>
+      <h3 class="modal-title"></h3>
+      <div class="modal-image-container">
+        <img src="" alt="" class="modal-image">
+      </div>
+    </div>
+  </div>
 
   <script src="./javaScript/script.js"></script>
 </body>
