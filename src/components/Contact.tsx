@@ -1,0 +1,59 @@
+'use client';
+
+import { Mail } from 'lucide-react';
+import { personalInfo } from '@/data/personal';
+import { useCopyToClipboard } from '@/hooks/useCopyToClipboard';
+import ScrollReveal from './ScrollReveal';
+
+function LinkedinIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect width="4" height="12" x="2" y="9"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
+  );
+}
+
+export default function Contact() {
+  const { copy, copied } = useCopyToClipboard();
+
+  return (
+    <section className="section" id="contact">
+      <ScrollReveal>
+        <div className="section-inner">
+          <div className="section-label">Get in touch</div>
+          <h2>Contact Me</h2>
+          <div className="contact-links">
+            <a
+              href="#"
+              className={`contact-link ${copied ? 'copied' : ''}`}
+              id="email-copy"
+              aria-label="Copy email address to clipboard"
+              title="Click to copy email"
+              onClick={(e) => {
+                e.preventDefault();
+                copy(personalInfo.email);
+              }}
+            >
+              <Mail />
+              <span className="email-text">
+                {copied ? 'Email Copied!' : personalInfo.email}
+              </span>
+            </a>
+            <a
+              href={personalInfo.linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-link"
+              aria-label="Connect on LinkedIn"
+            >
+              <LinkedinIcon />
+              Wenhao He
+            </a>
+          </div>
+        </div>
+      </ScrollReveal>
+    </section>
+  );
+}

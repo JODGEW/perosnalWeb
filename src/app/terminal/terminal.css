@@ -1,10 +1,6 @@
-/* === macOS Terminal — Default (white) profile === */
+/* === macOS Terminal — scoped under .terminal-page === */
 
-* {
-  box-sizing: border-box;
-}
-
-body {
+.terminal-page {
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -16,19 +12,19 @@ body {
   overflow: hidden;
 }
 
-::selection {
+.terminal-page ::selection {
   color: #fff;
   background-color: #3b82f6;
 }
 
-::-moz-selection {
+.terminal-page ::-moz-selection {
   color: #fff;
   background-color: #3b82f6;
 }
 
 /* ---- Window chrome ---- */
 
-#window {
+.terminal-page .window {
   width: 100vw;
   height: 100vh;
   background: #fff;
@@ -39,7 +35,7 @@ body {
 
 /* ---- Title bar ---- */
 
-#titlebar {
+.terminal-page .titlebar {
   height: 38px;
   background: linear-gradient(180deg, #e8e6e8 0%, #d6d4d6 100%);
   border-bottom: 1px solid #b5b3b5;
@@ -52,31 +48,31 @@ body {
   -webkit-user-select: none;
 }
 
-.titlebar-buttons {
+.terminal-page .titlebar-buttons {
   display: flex;
   gap: 8px;
 }
 
-.btn {
+.terminal-page .btn {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   border: 0.5px solid rgba(0, 0, 0, 0.12);
 }
 
-.btn-close {
+.terminal-page .btn-close {
   background: #ff5f57;
 }
 
-.btn-minimize {
+.terminal-page .btn-minimize {
   background: #febc2e;
 }
 
-.btn-maximize {
+.terminal-page .btn-maximize {
   background: #28c840;
 }
 
-.titlebar-title {
+.terminal-page .titlebar-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -89,7 +85,7 @@ body {
 
 /* ---- Terminal body ---- */
 
-#terminal-body {
+.terminal-page .terminal-body {
   flex: 1;
   padding: 8px 12px;
   overflow-y: auto;
@@ -97,28 +93,28 @@ body {
   min-height: 0;
 }
 
-textarea {
+.terminal-page textarea {
   left: -1000px;
   position: absolute;
 }
 
-b {
+.terminal-page b {
   font-weight: bold;
   text-decoration: none;
 }
 
-#terminal {
+.terminal-page .terminal {
   width: 100%;
   position: relative;
 }
 
-.ascii-art {
+.terminal-page .ascii-art {
   width: 100%;
   text-align: left;
   overflow-x: auto;
 }
 
-.ascii-art a {
+.terminal-page .ascii-art span {
   display: block;
   font-family: "Menlo", "SF Mono", "Monaco", monospace;
   white-space: pre-wrap;
@@ -128,20 +124,20 @@ b {
 }
 
 @media (max-width: 768px) {
-  .ascii-art a {
+  .terminal-page .ascii-art span {
     font-size: 0.7em;
   }
 }
 
 @media (max-width: 550px) {
-  .ascii-art a {
+  .terminal-page .ascii-art span {
     font-size: 0.5em;
   }
 }
 
 /* ---- Cursor ---- */
 
-.cursor {
+.terminal-page .cursor {
   font-size: 12px;
   color: #000;
   background-color: #000;
@@ -165,21 +161,21 @@ b {
 
 /* ---- Command input bar ---- */
 
-#command {
+.terminal-page .command {
   cursor: text;
   min-height: 22px;
   color: #000;
   position: relative;
 }
 
-#liner {
+.terminal-page .liner {
   line-height: 1.5em;
   animation: show 0.5s ease forwards;
   animation-delay: 1.2s;
   opacity: 0;
 }
 
-#liner::before {
+.terminal-page .liner::before {
   color: #000;
   content: "(base) visitor@wenhaohe ~ %";
   font-weight: bold;
@@ -192,7 +188,7 @@ b {
 
 /* ---- Text output ---- */
 
-p {
+.terminal-page .output-line {
   display: block;
   line-height: 1.5em;
   margin: 0;
@@ -203,22 +199,22 @@ p {
   color: #000;
 }
 
-p:has(.welcome) {
+.terminal-page .output-line:has(.welcome) {
   text-align: center;
 }
 
 @media (max-width: 768px) {
-  p {
+  .terminal-page .output-line {
     white-space: pre-wrap;
     word-break: break-word;
   }
 }
 
-.no-animation {
+.terminal-page .no-animation {
   animation: typing 0 steps(30, end);
 }
 
-.margin {
+.terminal-page .margin {
   margin-left: 20px;
 }
 
@@ -229,55 +225,37 @@ p:has(.welcome) {
 
 /* ---- Semantic color classes ---- */
 
-.welcome {
+.terminal-page .welcome {
   color: #555;
   font-weight: 400;
   display: inline;
 }
 
-.name {
+.terminal-page .name {
   color: #000;
   font-weight: bold;
 }
 
-.color2 {
+.terminal-page .color2 {
   color: #555;
 }
 
-.command {
+.terminal-page .command-text {
   color: #0432ff;
   font-weight: bold;
 }
 
-.error {
+.terminal-page .error {
   color: #c41a16;
 }
 
-.inherit,
-a {
+.terminal-page .inherit {
   color: #555;
-}
-
-a {
-  text-decoration: none;
-  padding: 1px 3px;
-  border-radius: 3px;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-a:hover {
-  background: rgba(0, 0, 0, 0.08);
-  color: #0432ff;
-}
-
-a:focus {
-  outline: 2px solid #0432ff;
-  outline-offset: 1px;
 }
 
 /* ---- CRT transition overlay ---- */
 
-#crt-transition {
+.terminal-page .crt-transition {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -290,14 +268,13 @@ a:focus {
   visibility: hidden;
 }
 
-#crt-transition.active {
+.terminal-page .crt-transition.active {
   pointer-events: all;
   visibility: visible;
   animation: crt-takeover 1.1s ease-out forwards;
 }
 
-/* green scanline bar that sweeps top → bottom */
-.crt-scanline {
+.terminal-page .crt-scanline {
   position: absolute;
   top: 0;
   left: 0;
@@ -310,11 +287,11 @@ a:focus {
   opacity: 0;
 }
 
-#crt-transition.active .crt-scanline {
+.terminal-page .crt-transition.active .crt-scanline {
   animation: scanline-sweep 0.6s 0.35s ease-in-out forwards;
 }
 
-.crt-text {
+.terminal-page .crt-text {
   font-family: "Menlo", "SF Mono", monospace;
   font-size: 16px;
   color: #40E0A5;
@@ -322,19 +299,16 @@ a:focus {
   text-shadow: 0 0 8px rgba(64, 224, 165, 0.6);
 }
 
-#crt-transition.active .crt-text {
+.terminal-page .crt-transition.active .crt-text {
   animation: crt-text-in 0.3s 0.5s ease forwards;
 }
 
-.crt-dots {
+.terminal-page .crt-dots {
   animation: dots-blink 0.6s step-end infinite;
 }
 
-/* --- keyframes --- */
-
 @keyframes crt-takeover {
   0%   { opacity: 0; }
-  /* fast flicker */
   8%   { opacity: 1; }
   14%  { opacity: 0.3; }
   20%  { opacity: 1; }
@@ -360,30 +334,30 @@ a:focus {
 /* ---- Responsive ---- */
 
 @media (max-width: 768px) {
-  .titlebar-title {
+  .terminal-page .titlebar-title {
     font-size: 12px;
   }
-  p {
+  .terminal-page .output-line {
     font-size: 13px;
   }
-  #liner::before {
+  .terminal-page .liner::before {
     font-size: 13px;
   }
 }
 
 @media (max-width: 550px) {
-  body {
+  .terminal-page {
     font-size: 11px;
   }
-  .cursor {
+  .terminal-page .cursor {
     font-size: 8px;
     height: 1em;
     width: 6px;
   }
-  p {
+  .terminal-page .output-line {
     font-size: 11px;
   }
-  #liner::before {
+  .terminal-page .liner::before {
     font-size: 11px;
   }
 }
