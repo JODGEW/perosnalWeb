@@ -71,7 +71,7 @@ export default function About() {
         </div>
 
         <ScrollReveal className="mt-lg">
-          <h3>Experience</h3>
+          <h3>Experience &amp; Education</h3>
         </ScrollReveal>
         <Timeline />
         <CodeBlock />

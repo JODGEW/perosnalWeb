@@ -26,16 +26,38 @@ export default function Blog() {
           <div className="blog-cta">
             <div className="blog-card">
               <div className="blog-card-header">
-                <div className="blog-icon-wrapper">
-                  <div className="blog-icon">
-                    <PenTool />
+                <div className="blog-title-row">
+                  <div className="blog-icon-wrapper">
+                    <div className="blog-icon">
+                      <PenTool />
+                    </div>
+                  </div>
+                  <div className="blog-header-content">
+                    <h3>{blogData.title}</h3>
+                    <p>Machine learning, system design, and engineering notes.</p>
                   </div>
                 </div>
-                <div className="blog-header-content">
-                  <h3>{blogData.title}</h3>
-                  <div className="blog-status">
-                    <span className="status-indicator"></span>
-                    <span>{blogData.statusText}</span>
+
+                <div className="blog-latest">
+                  <div className="blog-latest-meta">
+                    <span className="status-indicator" aria-hidden="true"></span>
+                    <span>Latest post</span>
+                    {blogData.latestPost.dateText && (
+                      <span className="blog-latest-date">
+                        {blogData.latestPost.dateText}
+                      </span>
+                    )}
+                  </div>
+                  <div className="blog-latest-body">
+                    <a
+                      href={blogData.latestPost.url}
+                      className="blog-latest-title"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>{blogData.latestPost.title}</span>
+                      <ExternalLink />
+                    </a>
                   </div>
                 </div>
               </div>

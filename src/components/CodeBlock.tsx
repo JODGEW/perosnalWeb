@@ -8,31 +8,36 @@ const codeText = `class SoftwareEngineer:
 
     def __init__(self):
         self.name = "Wenhao He"
-        self.role = "Software Engineer"
+        self.role = "Founder & Software Engineer"
         self._email = "wenhaohe8@gmail.com"
 
         self.education = [
-            "M.S. in Artificial Intelligence — University at Buffalo (SUNY)",
-            "B.S. in Computer Science — University at Buffalo (SUNY)",
+            "MS in Artificial Intelligence — University at Buffalo (SUNY)",
+            "BS in Computer Science — University at Buffalo (SUNY)",
+        ]
+
+        self.certifications = [
+            "AWS Certified Developer — Associate (Issued Feb 2026)",
         ]
 
         self.experience = [
-            "Software Engineer @ Clipp — New York, NY",
-            "Software Engineer @ CAN International — New York, NY",
+            "Founder & Software Engineer @ ResumeMatch — New York, NY",
+            "Full-Stack Software Engineer @ Clipp — New York, NY",
+            "Full-Stack Software Engineer @ CAN International — New York, NY",
         ]
 
         self.stack = {
-            "languages": ["Python", "TypeScript", "JavaScript", "C/C++", "C#", "Java", "Go"],
-            "frontend":  ["React", "Next.js", "React Native", "Angular", "Tailwind"],
-            "backend":   [".NET", "Node.js", "Express", "Flask", "Spring", "GraphQL"],
+            "languages": ["Python", "TypeScript", "JavaScript", "Java", "C++", "Bash"],
+            "frontend":  ["React", "Next.js", "React Native", "Angular", "Flutter", "Tailwind"],
+            "backend":   ["Node.js", "Express", "GraphQL", "Kafka", "Flask", "FastAPI", "Spring"],
             "databases": ["MySQL", "PostgreSQL", "MongoDB", "DynamoDB", "Redis"],
-            "ai_ml":     ["LLMs", "RAG", "Transformers", "TensorFlow", "PyTorch"],
-            "cloud":     ["AWS", "Terraform", "Docker", "Kubernetes", "GCP", "Azure"],
+            "ai_ml":     ["Bedrock", "LangChain", "Chroma", "RAG", "LLMs", "TensorFlow", "PyTorch"],
+            "cloud":     ["AWS Lambda", "API Gateway", "DynamoDB", "S3", "Cognito", "Azure", "Docker"],
         }
 
     @property
     def current_focus(self):
-        return "Building scalable full-stack & AI-powered solutions"
+        return "Building AWS-backed AI products and full-stack systems"
 
     def __repr__(self):
         return f"{self.name} | {self.role}"`;
@@ -65,27 +70,32 @@ export default function CodeBlock() {
             {'        '}<span className="keyword">self</span>.name ={' '}
             <span className="string">&quot;Wenhao He&quot;</span>{'\n'}
             {'        '}<span className="keyword">self</span>.role ={' '}
-            <span className="string">&quot;Software Engineer&quot;</span>{'\n'}
+            <span className="string">&quot;Founder &amp; Software Engineer&quot;</span>{'\n'}
             {'        '}<span className="keyword">self</span>._email ={' '}
             <span className="string">&quot;wenhaohe8@gmail.com&quot;</span>{'\n'}
             {'\n'}
             {'        '}<span className="keyword">self</span>.education = [{'\n'}
-            {'            '}<span className="string">&quot;M.S. in Artificial Intelligence &mdash; University at Buffalo (SUNY)&quot;</span>,{'\n'}
-            {'            '}<span className="string">&quot;B.S. in Computer Science &mdash; University at Buffalo (SUNY)&quot;</span>,{'\n'}
+            {'            '}<span className="string">&quot;MS in Artificial Intelligence &mdash; University at Buffalo (SUNY)&quot;</span>,{'\n'}
+            {'            '}<span className="string">&quot;BS in Computer Science &mdash; University at Buffalo (SUNY)&quot;</span>,{'\n'}
+            {'        '}]{'\n'}
+            {'\n'}
+            {'        '}<span className="keyword">self</span>.certifications = [{'\n'}
+            {'            '}<span className="string">&quot;AWS Certified Developer &mdash; Associate (Issued Feb 2026)&quot;</span>,{'\n'}
             {'        '}]{'\n'}
             {'\n'}
             {'        '}<span className="keyword">self</span>.experience = [{'\n'}
-            {'            '}<span className="string">&quot;Software Engineer @ Clipp &mdash; New York, NY&quot;</span>,{'\n'}
-            {'            '}<span className="string">&quot;Software Engineer @ CAN International &mdash; New York, NY&quot;</span>,{'\n'}
+            {'            '}<span className="string">&quot;Founder &amp; Software Engineer @ ResumeMatch &mdash; New York, NY&quot;</span>,{'\n'}
+            {'            '}<span className="string">&quot;Full-Stack Software Engineer @ Clipp &mdash; New York, NY&quot;</span>,{'\n'}
+            {'            '}<span className="string">&quot;Full-Stack Software Engineer @ CAN International &mdash; New York, NY&quot;</span>,{'\n'}
             {'        '}]{'\n'}
             {'        '}{'\n'}
             {'        '}<span className="keyword">self</span>.stack = {'{'}{'\n'}
-            {'            '}<span className="string">&quot;languages&quot;</span>: [<span className="string">&quot;Python&quot;</span>, <span className="string">&quot;TypeScript&quot;</span>, <span className="string">&quot;JavaScript&quot;</span>, <span className="string">&quot;C/C++&quot;</span>, <span className="string">&quot;C#&quot;</span>, <span className="string">&quot;Java&quot;</span>, <span className="string">&quot;Go&quot;</span>],{'\n'}
-            {'            '}<span className="string">&quot;frontend&quot;</span>:  [<span className="string">&quot;React&quot;</span>, <span className="string">&quot;Next.js&quot;</span>, <span className="string">&quot;React Native&quot;</span>, <span className="string">&quot;Angular&quot;</span>, <span className="string">&quot;Tailwind&quot;</span>],{'\n'}
-            {'            '}<span className="string">&quot;backend&quot;</span>:   [<span className="string">&quot;.NET&quot;</span>, <span className="string">&quot;Node.js&quot;</span>, <span className="string">&quot;Express&quot;</span>, <span className="string">&quot;Flask&quot;</span>, <span className="string">&quot;Spring&quot;</span>, <span className="string">&quot;GraphQL&quot;</span>],{'\n'}
+            {'            '}<span className="string">&quot;languages&quot;</span>: [<span className="string">&quot;Python&quot;</span>, <span className="string">&quot;TypeScript&quot;</span>, <span className="string">&quot;JavaScript&quot;</span>, <span className="string">&quot;Java&quot;</span>, <span className="string">&quot;C++&quot;</span>, <span className="string">&quot;Bash&quot;</span>],{'\n'}
+            {'            '}<span className="string">&quot;frontend&quot;</span>:  [<span className="string">&quot;React&quot;</span>, <span className="string">&quot;Next.js&quot;</span>, <span className="string">&quot;React Native&quot;</span>, <span className="string">&quot;Angular&quot;</span>, <span className="string">&quot;Flutter&quot;</span>, <span className="string">&quot;Tailwind&quot;</span>],{'\n'}
+            {'            '}<span className="string">&quot;backend&quot;</span>:   [<span className="string">&quot;Node.js&quot;</span>, <span className="string">&quot;Express&quot;</span>, <span className="string">&quot;GraphQL&quot;</span>, <span className="string">&quot;Kafka&quot;</span>, <span className="string">&quot;Flask&quot;</span>, <span className="string">&quot;FastAPI&quot;</span>, <span className="string">&quot;Spring&quot;</span>],{'\n'}
             {'            '}<span className="string">&quot;databases&quot;</span>: [<span className="string">&quot;MySQL&quot;</span>, <span className="string">&quot;PostgreSQL&quot;</span>, <span className="string">&quot;MongoDB&quot;</span>, <span className="string">&quot;DynamoDB&quot;</span>, <span className="string">&quot;Redis&quot;</span>],{'\n'}
-            {'            '}<span className="string">&quot;ai_ml&quot;</span>:     [<span className="string">&quot;LLMs&quot;</span>, <span className="string">&quot;RAG&quot;</span>, <span className="string">&quot;Transformers&quot;</span>, <span className="string">&quot;TensorFlow&quot;</span>, <span className="string">&quot;PyTorch&quot;</span>],{'\n'}
-            {'            '}<span className="string">&quot;cloud&quot;</span>:     [<span className="string">&quot;AWS&quot;</span>, <span className="string">&quot;Terraform&quot;</span>, <span className="string">&quot;Docker&quot;</span>, <span className="string">&quot;Kubernetes&quot;</span>, <span className="string">&quot;GCP&quot;</span>, <span className="string">&quot;Azure&quot;</span>],{'\n'}
+            {'            '}<span className="string">&quot;ai_ml&quot;</span>:     [<span className="string">&quot;Bedrock&quot;</span>, <span className="string">&quot;LangChain&quot;</span>, <span className="string">&quot;Chroma&quot;</span>, <span className="string">&quot;RAG&quot;</span>, <span className="string">&quot;LLMs&quot;</span>, <span className="string">&quot;TensorFlow&quot;</span>, <span className="string">&quot;PyTorch&quot;</span>],{'\n'}
+            {'            '}<span className="string">&quot;cloud&quot;</span>:     [<span className="string">&quot;AWS Lambda&quot;</span>, <span className="string">&quot;API Gateway&quot;</span>, <span className="string">&quot;DynamoDB&quot;</span>, <span className="string">&quot;S3&quot;</span>, <span className="string">&quot;Cognito&quot;</span>, <span className="string">&quot;Azure&quot;</span>, <span className="string">&quot;Docker&quot;</span>],{'\n'}
             {'        '}{'}'}{'\n'}
             {'\n'}
             {'    '}<span className="keyword">@property</span>{'\n'}
@@ -93,7 +103,7 @@ export default function CodeBlock() {
             <span className="function">current_focus</span>(
             <span className="keyword">self</span>):{'\n'}
             {'        '}<span className="keyword">return</span>{' '}
-            <span className="string">&quot;Building scalable full-stack &amp; AI-powered solutions&quot;</span>{'\n'}
+            <span className="string">&quot;Building AWS-backed AI products and full-stack systems&quot;</span>{'\n'}
             {'    '}{'\n'}
             {'    '}<span className="keyword">def</span>{' '}
             <span className="function">__repr__</span>(

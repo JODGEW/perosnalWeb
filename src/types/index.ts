@@ -57,9 +57,16 @@ export interface BlogFeature {
   label: string;
 }
 
+export interface BlogLatestPost {
+  title: string;
+  dateText: string;
+  statusText: string;
+  url: string;
+}
+
 export interface BlogData {
   title: string;
-  statusText: string;
+  latestPost: BlogLatestPost;
   description: string;
   features: BlogFeature[];
   visitUrl: string;

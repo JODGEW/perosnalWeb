@@ -16,21 +16,24 @@ export const personalInfo: PersonalInfo = {
 export const aboutInfo = {
   rows: [
     { label: 'Name', value: 'Wenhao He (Jacky)' },
-    { label: 'Focus', value: 'Full-Stack / AI / Cloud' },
+    {
+      label: 'Focus',
+      value: 'AWS-backed AI products, LLM validation, and full-stack systems',
+    },
     {
       label: 'Skills',
       value:
-        'Python, TypeScript, JavaScript, C, C++, C#, Java, Go, PHP, Ruby, Scala, Swift, React, Next.js, React Native, Angular, Tailwind, Expo, .NET, ASP.NET Core, Node.js, Express, Flask, Spring, Ruby on Rails, REST APIs, GraphQL, MySQL, PostgreSQL, MongoDB, DynamoDB, Redis, AWS (Lambda, API Gateway, DynamoDB, S3, Cognito, Textract, Bedrock, CloudFront, SNS, SQS, Step Functions), Terraform, Docker, Kubernetes, GCP, Azure, LLMs, RAG, NLP, Transformers, TensorFlow, PyTorch, CI/CD, Jest, pytest, Git, Jira, Datadog, Figma, Linux',
+        'Python, TypeScript, JavaScript, Java, C++, Bash, React, Next.js, React Native, Angular, Flutter, Node.js, Express, GraphQL, Kafka, Flask, FastAPI, Spring, MySQL, PostgreSQL, MongoDB, DynamoDB, Redis, AWS Lambda, API Gateway, S3, Cognito, CloudFront, Textract, Bedrock, Azure, Docker, LangChain, Chroma, RAG, TensorFlow, PyTorch, Jest, Playwright, pytest, Datadog',
     },
     {
       label: 'Interests',
       value:
-        'Always learning by exploring AI, testing cutting-edge tech, and building from the ground up.',
+        'Production AI systems, LLM evaluation, RAG agents, event-driven backends, cloud cost optimization, and developer-quality tooling.',
     },
     {
       label: 'Projects',
       value:
-        'Serverless AI Apps, Audio Cloning, CV apps, NLP apps, RAG pipelines, and full-stack AI solutions.',
+        'Financial Document Intelligence Agent, Order Processing System, Movie Recommendation System, ML/CV research builds, and full-stack AI tooling.',
     },
   ],
 };

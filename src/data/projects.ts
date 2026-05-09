@@ -8,23 +8,31 @@ export const projectFilters = [
 
 export const projects: ProjectItem[] = [
   {
-    title: 'ResumeMatch',
-    categories: ['ai', 'web'],
+    title: 'Financial Document Intelligence Agent',
+    categories: ['ai'],
     mediaType: 'image',
-    imageSrc: '/images/resumeMatch.PNG',
+    imageSrc: '/images/FDIA.png',
     description:
-      'Serverless AI resume analyzer built on AWS. Designed an event-driven pipeline (S3 → Lambda → Textract → Bedrock) for 4-pass LLM analysis including keyword extraction, match scoring, and resume rewriting. Deployed as a React/TypeScript SPA with Cognito auth, DynamoDB persistence, and CloudFront delivery.',
+      'Built a RAG-based financial document agent on Claude Haiku using the ReAct pattern, dynamically routing queries between Chroma and Tavily with local-first retrieval for finance and compliance questions.',
+    links: [],
+    techStack: ['Python', 'AWS Bedrock', 'LangChain', 'Chroma', 'RAG'],
+  },
+  {
+    title: 'Order Processing System',
+    categories: ['web'],
+    mediaType: 'image',
+    imageSrc: '/images/order-processing-system.png',
+    description:
+      'Built a Spring Boot event-driven order processing system with a transactional outbox, PostgreSQL, and Kafka to reliably publish order events and avoid dual-write inconsistencies.',
     links: [
       {
-        label: 'Live App',
-        href: 'https://dgmqki2zr9mzh.cloudfront.net',
-        icon: 'ExternalLink',
+        label: 'GitHub',
+        href: 'https://github.com/JODGEW/Order-Processing-System',
+        icon: 'Github',
         external: true,
       },
     ],
-    techStack: [
-      'AWS Lambda', 'DynamoDB', 'Bedrock', 'Textract', 'React', 'TypeScript',
-    ],
+    techStack: ['Java', 'Spring Boot', 'Kafka', 'PostgreSQL', 'Docker'],
   },
   {
     title: 'Movie Recommendation System',

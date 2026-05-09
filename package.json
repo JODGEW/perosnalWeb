@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "update-blog": "node scripts/update-latest-blog.mjs",
+    "prebuild": "npm run update-blog",
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
