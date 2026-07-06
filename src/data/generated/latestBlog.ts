@@ -1,7 +1,7 @@
 export const latestBlog = {
-  "title": "Layoffs Aren’t Random. Companies Just Can’t Measure Real Value",
-  "dateText": "4/2/2026",
-  "statusText": "Recent: Layoffs Aren’t Random. Companies Just Can’t Measure Real Value (4/2/2026)",
-  "url": "https://blog.wenhaohe.com/#post/layoffs-arent-random-companies-just-cant-measure-real-value",
+  "title": "When Metrics Reward AI Usage Instead of Real Work",
+  "dateText": "6/10/2026",
+  "statusText": "Recent: When Metrics Reward AI Usage Instead of Real Work (6/10/2026)",
+  "url": "https://blog.wenhaohe.com/#post/when-metrics-reward-ai-usage-instead-of-real-work",
   "source": "https://blog.wenhaohe.com/api/posts"
 } as const;

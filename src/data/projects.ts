@@ -14,7 +14,14 @@ export const projects: ProjectItem[] = [
     imageSrc: '/images/FDIA.png',
     description:
       'Built a RAG-based financial document agent on Claude Haiku using the ReAct pattern, dynamically routing queries between Chroma and Tavily with local-first retrieval for finance and compliance questions.',
-    links: [],
+    links: [
+      {
+        label: 'GitHub',
+        href: 'https://github.com/JODGEW/Financial-Document-Intelligence-Agent',
+        icon: 'Github',
+        external: true,
+      },
+    ],
     techStack: ['Python', 'AWS Bedrock', 'LangChain', 'Chroma', 'RAG'],
   },
   {
@@ -38,7 +45,7 @@ export const projects: ProjectItem[] = [
     title: 'Movie Recommendation System',
     categories: ['ai', 'web'],
     mediaType: 'image',
-    imageSrc: '/images/page.png',
+    imageSrc: '/images/movie-recommendation-system.png',
     description:
       'Built an AI-powered movie recommendation system using Transformer models & TMDb metadata for personalized content. Engineered a scalable ML pipeline with AWS S3 & SageMaker for real-time inference & deployment.',
     links: [

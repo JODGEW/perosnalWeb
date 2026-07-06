@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Menu, ArrowUp } from 'lucide-react';
+import { Menu, ArrowUp, Sun, Moon } from 'lucide-react';
 import { useScrollHeader } from '@/hooks/useScrollHeader';
 import { useActiveSection } from '@/hooks/useActiveSection';
+import { useTheme } from '@/hooks/useTheme';
 
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
@@ -44,6 +45,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isScrolled, showBackToTop } = useScrollHeader();
   const activeSection = useActiveSection();
+  const { theme, toggle: toggleTheme } = useTheme();
 
   const toggleMenu = useCallback(() => {
     setMenuOpen((prev) => !prev);
@@ -73,31 +75,45 @@ export default function Header() {
             <span className="logo-text">Wenhao He</span>
           </a>
 
-          <button
-            className="menu-toggle"
-            id="menu-toggle"
-            aria-label="Toggle navigation menu"
-            aria-expanded={menuOpen}
-            onClick={toggleMenu}
-          >
-            <Menu className="nav-icon" />
-          </button>
+          <div className="nav-right">
+            <nav id="main-nav" className={menuOpen ? 'active' : ''}>
+              <ul>
+                {NAV_LINKS.map(({ href, label }) => (
+                  <li key={href}>
+                    <a
+                      href={href}
+                      className={activeSection === href.slice(1) ? 'active' : ''}
+                      onClick={(e) => handleNavClick(e, href)}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          <nav id="main-nav" className={menuOpen ? 'active' : ''}>
-            <ul>
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={href}>
-                  <a
-                    href={href}
-                    className={activeSection === href.slice(1) ? 'active' : ''}
-                    onClick={(e) => handleNavClick(e, href)}
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            <button
+              className="theme-toggle"
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+              onClick={toggleTheme}
+            >
+              {theme === 'dark' ? (
+                <Sun className="theme-icon" />
+              ) : (
+                <Moon className="theme-icon" />
+              )}
+            </button>
+
+            <button
+              className="menu-toggle"
+              id="menu-toggle"
+              aria-label="Toggle navigation menu"
+              aria-expanded={menuOpen}
+              onClick={toggleMenu}
+            >
+              <Menu className="nav-icon" />
+            </button>
+          </div>
         </div>
       </header>
 
