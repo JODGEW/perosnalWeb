@@ -2,23 +2,26 @@
 
 import { useEffect, useState } from 'react';
 
-const SECTION_IDS = ['about', 'skills', 'projects', 'blogs', 'contact'];
+const SECTION_IDS = [
+  'about',
+  'projects',
+  'experience',
+  'skills',
+  'blogs',
+  'contact',
+];
 
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     function onScroll() {
-      const scrollTop = window.pageYOffset;
       let current = '';
       for (const id of SECTION_IDS) {
-        const section = document.getElementById(id);
-        if (!section) continue;
-        const offsetTop = section.offsetTop - 80;
-        const height = section.offsetHeight;
-        if (scrollTop >= offsetTop && scrollTop < offsetTop + height) {
-          current = id;
-        }
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 160 && rect.bottom > 160) current = id;
       }
       setActiveSection(current);
     }

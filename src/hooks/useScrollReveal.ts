@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export function useScrollReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+export function useScrollReveal<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T>(null);
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function useScrollReveal() {
           observer.disconnect();
         }
       },
-      { rootMargin: '0px 0px -15% 0px' }
+      { rootMargin: '0px 0px -12% 0px' }
     );
 
     observer.observe(el);

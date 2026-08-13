@@ -1,104 +1,68 @@
-'use client';
-
-import {
-  PenTool, Brain, Network, Settings, ExternalLink,
-} from 'lucide-react';
+import { ArrowUpRight, Brain, Network, Settings } from 'lucide-react';
 import { blogData } from '@/data/blog';
+import SectionHead from './SectionHead';
 import ScrollReveal from './ScrollReveal';
 
-const featureIcons: Record<string, React.ComponentType> = {
-  Brain, Network, Settings,
+const topicIcons: Record<string, React.ComponentType> = {
+  Brain,
+  Network,
+  Settings,
 };
 
 export default function Blog() {
+  const { latestPost } = blogData;
+
   return (
     <section className="section" id="blogs">
-      <div className="bg-pattern dots"></div>
-      <div className="section-inner">
-        <ScrollReveal>
-          <div className="section-label">Writing &amp; thoughts</div>
-        </ScrollReveal>
-        <ScrollReveal>
-          <h2>Blog</h2>
-        </ScrollReveal>
+      <SectionHead num="05" title="Writing" aside={blogData.visitLabel} />
 
-        <ScrollReveal delay={1}>
-          <div className="blog-cta">
-            <div className="blog-card">
-              <div className="blog-card-header">
-                <div className="blog-title-row">
-                  <div className="blog-icon-wrapper">
-                    <div className="blog-icon">
-                      <PenTool />
-                    </div>
-                  </div>
-                  <div className="blog-header-content">
-                    <h3>{blogData.title}</h3>
-                    <p>Machine learning, system design, and engineering notes.</p>
-                  </div>
-                </div>
-
-                <div className="blog-latest">
-                  <div className="blog-latest-meta">
-                    <span className="status-indicator" aria-hidden="true"></span>
-                    <span>Latest post</span>
-                    {blogData.latestPost.dateText && (
-                      <span className="blog-latest-date">
-                        {blogData.latestPost.dateText}
-                      </span>
-                    )}
-                  </div>
-                  <div className="blog-latest-body">
-                    <a
-                      href={blogData.latestPost.url}
-                      className="blog-latest-title"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span>{blogData.latestPost.title}</span>
-                      <ExternalLink />
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="blog-card-content">
-                <p>{blogData.description}</p>
-                <div className="blog-features">
-                  {blogData.features.map((feature) => {
-                    const Icon = featureIcons[feature.icon];
-                    return (
-                      <div key={feature.label} className="feature-item">
-                        <div className="feature-icon">
-                          {Icon && <Icon />}
-                        </div>
-                        <span>{feature.label}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="blog-card-footer">
-                <a
-                  href={blogData.visitUrl}
-                  className="blog-visit-btn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>Visit My Blog</span>
-                  <ExternalLink />
-                </a>
-                <div className="blog-tech-stack">
-                  {blogData.techBadges.map((badge) => (
-                    <span key={badge} className="tech-badge">{badge}</span>
-                  ))}
-                </div>
-              </div>
+      <ScrollReveal>
+        <div className="writing-grid">
+          <div className="writing-main">
+            <div className="post-meta">
+              <span className="live-dot" aria-hidden="true" />
+              <span className="label">Latest post</span>
+              {latestPost.dateText && (
+                <span className="date">{latestPost.dateText}</span>
+              )}
             </div>
+
+            <a
+              href={latestPost.url}
+              className="post-title"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {latestPost.title}
+              <ArrowUpRight />
+            </a>
+
+            <p className="writing-desc">{blogData.description}</p>
           </div>
-        </ScrollReveal>
-      </div>
+
+          <div className="writing-side">
+            {blogData.topics.map((topic) => {
+              const Icon = topicIcons[topic.icon];
+              return (
+                <div key={topic.label} className="topic-row">
+                  {Icon && <Icon />}
+                  <span>{topic.label}</span>
+                </div>
+              );
+            })}
+
+            <a
+              href={blogData.visitUrl}
+              className="btn btn-solid"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Read the blog
+              <ArrowUpRight />
+            </a>
+          </div>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

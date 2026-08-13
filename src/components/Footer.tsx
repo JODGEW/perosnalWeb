@@ -1,8 +1,9 @@
 export default function Footer() {
   return (
-    <footer>
-      <div className="container footer-content">
-        <p>&copy;2026 Wenhao He</p>
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <span>&copy; 2026 Wenhao He</span>
+        <span>New York, NY</span>
       </div>
     </footer>
   );

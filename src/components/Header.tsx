@@ -1,135 +1,109 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { Menu, ArrowUp, Sun, Moon } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
+import { ArrowUp, Menu, Moon, Sun, X } from 'lucide-react';
+import { personalInfo } from '@/data/personal';
 import { useScrollHeader } from '@/hooks/useScrollHeader';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useTheme } from '@/hooks/useTheme';
+import { scrollToSection, scrollToTop } from '@/lib/scroll';
 
 const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#blogs', label: 'Blog' },
-  { href: '#contact', label: 'Contact' },
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Stack' },
+  { id: 'blogs', label: 'Writing' },
+  { id: 'contact', label: 'Contact' },
 ];
-
-function easeOutCubic(t: number, b: number, c: number, d: number) {
-  t /= d;
-  t--;
-  return c * (t * t * t + 1) + b;
-}
-
-function smoothScroll(target: string, duration: number) {
-  const element = document.querySelector(target);
-  if (!element) return;
-
-  const startPos = window.pageYOffset;
-  const endPos = (element as HTMLElement).offsetTop - 70;
-  const distance = endPos - startPos;
-  let startTime: number | null = null;
-
-  function animation(currentTime: number) {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const run = easeOutCubic(timeElapsed, startPos, distance, duration);
-    window.scrollTo(0, run);
-    if (timeElapsed < duration) {
-      requestAnimationFrame(animation);
-    }
-  }
-  requestAnimationFrame(animation);
-}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { isScrolled, showBackToTop } = useScrollHeader();
+  const { showBackToTop } = useScrollHeader();
   const activeSection = useActiveSection();
   const { theme, toggle: toggleTheme } = useTheme();
 
-  const toggleMenu = useCallback(() => {
-    setMenuOpen((prev) => !prev);
-  }, []);
-
   useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add('menu-open');
-    } else {
-      document.body.classList.remove('menu-open');
-    }
+    document.body.classList.toggle('menu-open', menuOpen);
     return () => document.body.classList.remove('menu-open');
   }, [menuOpen]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    smoothScroll(href, 600);
-  };
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+      e.preventDefault();
+      setMenuOpen(false);
+      scrollToSection(id);
+    },
+    []
+  );
 
   return (
     <>
-      <header id="header" className={isScrolled ? 'scrolled' : ''}>
-        <div className="container nav-container">
-          <a href="#" className="logo" aria-label="Wenhao He Portfolio Home">
-            <span className="logo-mark">W</span>
-            <span className="logo-text">Wenhao He</span>
+      <header className="site-header">
+        <div className="header-inner">
+          <a
+            href="#home"
+            className="wordmark"
+            aria-label={`${personalInfo.name} — home`}
+            onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              scrollToTop();
+            }}
+          >
+            <span className="wordmark-name">{personalInfo.name}</span>
+            <span className="wordmark-alias">{personalInfo.nickname}</span>
           </a>
 
-          <div className="nav-right">
-            <nav id="main-nav" className={menuOpen ? 'active' : ''}>
-              <ul>
-                {NAV_LINKS.map(({ href, label }) => (
-                  <li key={href}>
-                    <a
-                      href={href}
-                      className={activeSection === href.slice(1) ? 'active' : ''}
-                      onClick={(e) => handleNavClick(e, href)}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div className="header-right">
+            <nav
+              id="main-nav"
+              className={`site-nav ${menuOpen ? 'open' : ''}`}
+              aria-label="Section navigation"
+            >
+              {NAV_LINKS.map(({ id, label }) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  className={activeSection === id ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e, id)}
+                >
+                  {label}
+                </a>
+              ))}
             </nav>
 
             <button
-              className="theme-toggle"
+              className="icon-btn"
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
               onClick={toggleTheme}
             >
-              {theme === 'dark' ? (
-                <Sun className="theme-icon" />
-              ) : (
-                <Moon className="theme-icon" />
-              )}
+              {theme === 'dark' ? <Sun /> : <Moon />}
             </button>
 
             <button
-              className="menu-toggle"
-              id="menu-toggle"
+              className="icon-btn menu-btn"
               aria-label="Toggle navigation menu"
               aria-expanded={menuOpen}
-              onClick={toggleMenu}
+              aria-controls="main-nav"
+              onClick={() => setMenuOpen((open) => !open)}
             >
-              <Menu className="nav-icon" />
+              {menuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
       </header>
 
-      <div
-        className={`backdrop ${menuOpen ? 'active' : ''}`}
-        id="backdrop"
-        onClick={toggleMenu}
-      />
+      {menuOpen && (
+        <div className="nav-backdrop" onClick={() => setMenuOpen(false)} />
+      )}
 
       <button
         className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
-        id="back-to-top"
         aria-label="Back to top"
-        onClick={() => smoothScroll('#about', 800)}
+        onClick={scrollToTop}
       >
-        <ArrowUp className="back-to-top-icon" />
+        <ArrowUp />
       </button>
     </>
   );

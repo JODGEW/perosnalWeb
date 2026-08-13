@@ -1,50 +1,20 @@
-'use client';
-
-import { useState } from 'react';
-import { skills, skillFilters } from '@/data/skills';
+import { stack } from '@/data/skills';
+import SectionHead from './SectionHead';
 import ScrollReveal from './ScrollReveal';
-import SkillCard from './SkillCard';
 
 export default function Skills() {
-  const [activeFilter, setActiveFilter] = useState('all');
-
   return (
     <section className="section" id="skills">
-      <div className="bg-pattern grid"></div>
-      <div className="section-inner">
-        <ScrollReveal>
-          <div className="section-label">What I work with</div>
-        </ScrollReveal>
-        <ScrollReveal>
-          <h2>Skills</h2>
-        </ScrollReveal>
+      <SectionHead num="04" title="Stack" aside="What I work with" />
 
-        <ScrollReveal>
-          <div className="skill-filters">
-            {skillFilters.map((filter) => (
-              <button
-                key={filter.value}
-                className={`skill-filter ${activeFilter === filter.value ? 'active' : ''}`}
-                data-filter={filter.value}
-                onClick={() => setActiveFilter(filter.value)}
-              >
-                {filter.label}
-              </button>
-            ))}
+      {stack.map((row) => (
+        <ScrollReveal key={row.label}>
+          <div className="rule-row stack-row">
+            <div className="rule-key">{row.label}</div>
+            <div className="stack-items">{row.items}</div>
           </div>
         </ScrollReveal>
-
-        <div className="skills-grid">
-          {skills
-            .filter(
-              (skill) =>
-                activeFilter === 'all' || skill.category === activeFilter
-            )
-            .map((skill) => (
-              <SkillCard key={skill.heading} skill={skill} />
-            ))}
-        </div>
-      </div>
+      ))}
     </section>
   );
 }

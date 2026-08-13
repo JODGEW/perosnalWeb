@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 interface LightboxState {
   open: (src: string, title: string) => void;
@@ -13,58 +13,50 @@ export function useLightbox() {
 }
 
 export function LightboxProvider({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [imageSrc, setImageSrc] = useState('');
-  const [imageTitle, setImageTitle] = useState('');
+  const [shot, setShot] = useState<{ src: string; title: string } | null>(null);
 
   const open = useCallback((src: string, title: string) => {
-    setImageSrc(src);
-    setImageTitle(title);
-    setIsOpen(true);
+    setShot({ src, title });
     document.body.style.overflow = 'hidden';
   }, []);
 
   const close = useCallback(() => {
-    setIsOpen(false);
+    setShot(null);
     document.body.style.overflow = '';
-    setTimeout(() => {
-      if (!document.querySelector('.image-modal.open')) {
-        setImageSrc('');
-      }
-    }, 300);
   }, []);
 
   useEffect(() => {
-    function handleEscape(e: KeyboardEvent) {
-      if (e.key === 'Escape' && isOpen) close();
+    if (!shot) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') close();
     }
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, close]);
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [shot, close]);
 
   return (
     <LightboxContext.Provider value={{ open }}>
       {children}
-      <div
-        className={`image-modal ${isOpen ? 'open' : ''}`}
-        id="image-modal"
-        onClick={(e) => {
-          if (e.target === e.currentTarget) close();
-        }}
-      >
-        <div className="modal-content">
-          <button className="close-modal" onClick={close}>
-            &times;
-          </button>
-          <h3 className="modal-title">{imageTitle}</h3>
-          <div className="modal-image-container">
-            {imageSrc && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={imageSrc} alt={imageTitle} className="modal-image" />
-            )}
+      {shot && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={shot.title}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) close();
+          }}
+        >
+          <div className="lightbox-panel">
+            <div className="lightbox-title">{shot.title}</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={shot.src} alt={shot.title} />
+            <button className="lightbox-close" aria-label="Close" onClick={close}>
+              ×
+            </button>
           </div>
         </div>
-      </div>
+      )}
     </LightboxContext.Provider>
   );
 }

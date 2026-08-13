@@ -1,130 +1,100 @@
 'use client';
 
-import { useRef, useState, useEffect, useCallback } from 'react';
-import { Play, Pause } from 'lucide-react';
-
-function formatTime(seconds: number): string {
-  if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
-  return `${mins}:${secs}`;
-}
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Pause, Play } from 'lucide-react';
 
 interface Props {
   src: string;
-  id: string;
+  label: string;
 }
 
-export default function AudioPlayer({ src, id }: Props) {
+function formatTime(seconds: number) {
+  if (!Number.isFinite(seconds)) return '0:00';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+export default function AudioPlayer({ src, label }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [timeText, setTimeText] = useState('0:00 / 0:00');
-  const [error, setError] = useState(false);
-
-  const pause = useCallback(() => {
-    audioRef.current?.pause();
-    setPlaying(false);
-  }, []);
-
-  useEffect(() => {
-    function handleOtherPlay(e: Event) {
-      const detail = (e as CustomEvent).detail;
-      if (detail?.id !== id) pause();
-    }
-    window.addEventListener('audio-play', handleOtherPlay);
-    return () => window.removeEventListener('audio-play', handleOtherPlay);
-  }, [id, pause]);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const onMeta = () =>
-      setTimeText(`0:00 / ${formatTime(audio.duration)}`);
-    const onTime = () => {
-      const p = (audio.currentTime / audio.duration) * 100;
-      setProgress(p);
-      setTimeText(`${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`);
-    };
+    const onTime = () => setCurrent(audio.currentTime);
+    const onMeta = () => setDuration(audio.duration);
     const onEnd = () => {
       setPlaying(false);
-      setProgress(0);
-    };
-    const onErr = () => {
-      setError(true);
-      setTimeText('Error loading audio');
+      setCurrent(0);
     };
 
-    audio.addEventListener('loadedmetadata', onMeta);
     audio.addEventListener('timeupdate', onTime);
+    audio.addEventListener('loadedmetadata', onMeta);
     audio.addEventListener('ended', onEnd);
-    audio.addEventListener('error', onErr);
-
     return () => {
-      audio.removeEventListener('loadedmetadata', onMeta);
       audio.removeEventListener('timeupdate', onTime);
+      audio.removeEventListener('loadedmetadata', onMeta);
       audio.removeEventListener('ended', onEnd);
-      audio.removeEventListener('error', onErr);
     };
   }, []);
 
-  const togglePlay = async () => {
+  const toggle = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
-
     if (audio.paused) {
-      window.dispatchEvent(new CustomEvent('audio-play', { detail: { id } }));
-      try {
-        await audio.play();
-        setPlaying(true);
-      } catch {
-        console.error('Error playing audio');
-      }
+      void audio.play();
+      setPlaying(true);
     } else {
-      pause();
+      audio.pause();
+      setPlaying(false);
     }
-  };
+  }, []);
 
-  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const pos = (e.clientX - rect.left) / rect.width;
-    audio.currentTime = pos * audio.duration;
-  };
+  const seek = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const audio = audioRef.current;
+      if (!audio || !duration) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = Math.min(Math.max(ratio, 0), 1) * duration;
+    },
+    [duration]
+  );
+
+  const progress = duration ? (current / duration) * 100 : 0;
 
   return (
-    <div className="audio-player">
-      <audio ref={audioRef} preload="metadata">
-        <source src={src} type="audio/mpeg" />
-      </audio>
+    <div className="audio-panel">
+      <div className="audio-panel-label">{label}</div>
+
       <div className="audio-controls">
         <button
           className={`play-btn ${playing ? 'playing' : ''}`}
-          onClick={togglePlay}
+          aria-label={playing ? 'Pause sample' : 'Play sample'}
+          onClick={toggle}
         >
-          {playing ? (
-            <Pause className="play-icon" />
-          ) : (
-            <Play className="play-icon" />
-          )}
+          {playing ? <Pause /> : <Play />}
         </button>
-        <div className="audio-progress-container">
-          <div className="audio-progress-bar" onClick={seek}>
-            <div
-              className="audio-progress-indicator"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+
+        <div className="audio-track">
           <div
-            className="time-display"
-            style={error ? { color: 'var(--error-color)' } : undefined}
+            className="audio-bar"
+            role="presentation"
+            onClick={seek}
           >
-            {timeText}
+            <div className="audio-fill" style={{ width: `${progress}%` }} />
+          </div>
+          <div className="audio-time">
+            {formatTime(current)} / {formatTime(duration)}
           </div>
         </div>
       </div>
+
+      <audio ref={audioRef} src={src} preload="metadata" />
     </div>
   );
 }

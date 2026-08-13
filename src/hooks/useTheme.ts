@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react';
 export type Theme = 'light' | 'dark';
 
 const THEME_COLORS: Record<Theme, string> = {
-  light: '#F7F6F3',
-  dark: '#0e0e10',
+  light: '#FAF8F4',
+  dark: '#14130F',
 };
 
 function readTheme(): Theme {

@@ -2,12 +2,30 @@ export interface PersonalInfo {
   name: string;
   nickname: string;
   role: string;
+  location: string;
   email: string;
-  description: string;
+  lede: string;
   siteUrl: string;
   linkedIn: string;
   blogUrl: string;
   resumePath: string;
+  portraitPath: string;
+}
+
+export interface HeroFact {
+  key: string;
+  value: string;
+}
+
+export interface Stat {
+  value: string;
+  label: string;
+  source: string;
+}
+
+export interface AboutRow {
+  label: string;
+  value: string;
 }
 
 export interface TimelineItem {
@@ -15,44 +33,42 @@ export interface TimelineItem {
   title: string;
   subtitle: string;
   bullets: string[];
-  revealDelay?: number;
 }
 
-export interface SkillProficiency {
+export interface StackRow {
   label: string;
-  fillWidth: number;
-}
-
-export interface SkillCardData {
-  category: 'languages' | 'libraries' | 'tools';
-  icon: string;
-  heading: string;
-  description: string;
-  proficiencies: SkillProficiency[];
-  tags: string[];
+  items: string;
 }
 
 export interface ProjectLink {
   label: string;
   href: string;
-  icon: string;
   external: boolean;
 }
 
-export type ProjectMediaType = 'image' | 'audio' | 'none';
+export type ProjectMediaType = 'image' | 'audio';
 
 export interface ProjectItem {
   title: string;
-  categories: string[];
+  /** Short editorial category shown above the title, e.g. "Live product". */
+  kind: string;
   mediaType: ProjectMediaType;
   imageSrc?: string;
+  /**
+   * How the card image sits in its 5:3 frame. Defaults to 'contain' (whole
+   * screenshot visible); 'cover' crops to the top edge, for tall assets like a
+   * full paper page that would otherwise shrink to an illegible sliver.
+   */
+  imageFit?: 'contain' | 'cover';
+  /** Larger asset opened by the lightbox, when it differs from the card image. */
+  expandSrc?: string;
   audioSrc?: string;
   description: string;
   links: ProjectLink[];
   techStack: string[];
 }
 
-export interface BlogFeature {
+export interface BlogTopic {
   icon: string;
   label: string;
 }
@@ -65,10 +81,9 @@ export interface BlogLatestPost {
 }
 
 export interface BlogData {
-  title: string;
   latestPost: BlogLatestPost;
   description: string;
-  features: BlogFeature[];
+  topics: BlogTopic[];
   visitUrl: string;
-  techBadges: string[];
+  visitLabel: string;
 }

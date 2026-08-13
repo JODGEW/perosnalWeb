@@ -11,7 +11,7 @@ const instrumentSans = Instrument_Sans({
 
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '600'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-display',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     type: 'website',
   },
   other: {
-    'theme-color': '#F7F6F3',
+    'theme-color': '#FAF8F4',
   },
 };
 
@@ -94,7 +94,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;var m=document.querySelector('meta[name=\"theme-color\"]');if(m)m.setAttribute('content',t==='dark'?'#0e0e10':'#F7F6F3');}catch(e){}})();",
+              "(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;var m=document.querySelector('meta[name=\"theme-color\"]');if(m)m.setAttribute('content',t==='dark'?'#14130F':'#FAF8F4');}catch(e){}})();",
           }}
         />
         <script
