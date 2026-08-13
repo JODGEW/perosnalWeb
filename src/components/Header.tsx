@@ -1,12 +1,19 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { ArrowUp, Menu, Moon, Sun, X } from 'lucide-react';
+import { ArrowUp, Menu, Monitor, Moon, Sun, X } from 'lucide-react';
+import type { ThemePreference } from '@/hooks/useTheme';
 import { personalInfo } from '@/data/personal';
 import { useScrollHeader } from '@/hooks/useScrollHeader';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useTheme } from '@/hooks/useTheme';
 import { scrollToSection, scrollToTop } from '@/lib/scroll';
+
+const THEME_ICONS: Record<ThemePreference, React.ComponentType> = {
+  light: Sun,
+  dark: Moon,
+  system: Monitor,
+};
 
 const NAV_LINKS = [
   { id: 'about', label: 'About' },
@@ -21,7 +28,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { showBackToTop } = useScrollHeader();
   const activeSection = useActiveSection();
-  const { theme, toggle: toggleTheme } = useTheme();
+  const { preference, resolved, next, cycle } = useTheme();
+  const ThemeIcon = THEME_ICONS[preference];
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);
@@ -75,10 +83,15 @@ export default function Header() {
 
             <button
               className="icon-btn"
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-              onClick={toggleTheme}
+              aria-label={
+                preference === 'system'
+                  ? `Theme: system (currently ${resolved}). Switch to ${next}.`
+                  : `Theme: ${preference}. Switch to ${next}.`
+              }
+              title={`Theme: ${preference}`}
+              onClick={cycle}
             >
-              {theme === 'dark' ? <Sun /> : <Moon />}
+              <ThemeIcon />
             </button>
 
             <button

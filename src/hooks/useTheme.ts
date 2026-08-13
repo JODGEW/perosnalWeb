@@ -1,48 +1,87 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-export type Theme = 'light' | 'dark';
+/** What the user picked. `system` follows the OS rather than pinning a theme. */
+export type ThemePreference = 'light' | 'dark' | 'system';
+/** What is actually painted. `system` resolves to one of these. */
+export type ResolvedTheme = 'light' | 'dark';
 
-const THEME_COLORS: Record<Theme, string> = {
+const THEME_COLORS: Record<ResolvedTheme, string> = {
   light: '#FAF8F4',
   dark: '#14130F',
 };
 
-function readTheme(): Theme {
-  if (typeof document !== 'undefined') {
-    const attr = document.documentElement.dataset.theme;
-    if (attr === 'dark' || attr === 'light') return attr;
-  }
-  return 'light';
+const CYCLE: ThemePreference[] = ['light', 'dark', 'system'];
+
+const DARK_QUERY = '(prefers-color-scheme: dark)';
+
+function systemTheme(): ResolvedTheme {
+  return window.matchMedia(DARK_QUERY).matches ? 'dark' : 'light';
+}
+
+function paint(theme: ResolvedTheme) {
+  document.documentElement.dataset.theme = theme;
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute('content', THEME_COLORS[theme]);
 }
 
 /**
- * Reads the theme applied by the pre-paint script in the document head,
- * keeps React in sync, and persists user toggles to localStorage.
+ * Three-state theme control on top of the pre-paint script in `layout.tsx`.
+ *
+ * The script stamps `data-theme` before first paint, so this hook never paints
+ * on mount — it reads back what the script decided and only writes on a toggle
+ * or an OS change. A pinned choice is stored; `system` clears the key, which is
+ * the same "no stored preference" state the script already falls back from.
  */
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [preference, setPreference] = useState<ThemePreference>('system');
+  const [resolved, setResolved] = useState<ResolvedTheme>('light');
 
-  // Hydrate from the <html data-theme> the inline script already set.
+  // Hydrate from what the pre-paint script already read and applied.
   useEffect(() => {
-    setTheme(readTheme());
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch {
+      /* private mode / storage disabled — treat as no preference */
+    }
+    const pref: ThemePreference =
+      stored === 'light' || stored === 'dark' ? stored : 'system';
+    setPreference(pref);
+    setResolved(pref === 'system' ? systemTheme() : pref);
   }, []);
 
-  const toggle = () => {
-    setTheme((prev) => {
-      const next: Theme = prev === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = next;
-      try {
-        localStorage.setItem('theme', next);
-      } catch {
-        /* private mode / storage disabled — ignore */
-      }
-      const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', THEME_COLORS[next]);
-      return next;
-    });
-  };
+  // While following the system, track it live — someone on macOS auto-appearance
+  // crosses sunset with the tab open and the page should turn with it.
+  useEffect(() => {
+    if (preference !== 'system') return;
+    const mq = window.matchMedia(DARK_QUERY);
+    const sync = () => {
+      const next: ResolvedTheme = mq.matches ? 'dark' : 'light';
+      setResolved(next);
+      paint(next);
+    };
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, [preference]);
 
-  return { theme, toggle };
+  const next = CYCLE[(CYCLE.indexOf(preference) + 1) % CYCLE.length];
+
+  const cycle = useCallback(() => {
+    setPreference(next);
+    const theme = next === 'system' ? systemTheme() : next;
+    setResolved(theme);
+    paint(theme);
+    try {
+      if (next === 'system') localStorage.removeItem('theme');
+      else localStorage.setItem('theme', next);
+    } catch {
+      /* storage disabled — the choice just won't survive a reload */
+    }
+  }, [next]);
+
+  return { preference, resolved, next, cycle };
 }
